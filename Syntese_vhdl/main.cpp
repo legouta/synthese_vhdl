@@ -28,4 +28,8 @@ fct_write_file(fct_Maj_To_Min(chemin_1));
 fct_lexem_endl(chemin_2);
   return 0;
 }
+<<<<<<< HEAD
 int prout antoine;
+=======
+int prout damien;
+>>>>>>> 20c7041fa29aed32450f2617710392ccaf0eee71
