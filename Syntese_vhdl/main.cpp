@@ -4,7 +4,7 @@
  *
  * Created on 8 octobre 2015, 14:05
  */
-plop
+
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -28,6 +28,4 @@ fct_write_file(fct_Maj_To_Min(chemin_1));
 fct_lexem_endl(chemin_2);
   return 0;
 }
-int prout antoine;
-int prout damien;
-//  #antoinelatepu
+
