@@ -19,7 +19,7 @@ void fct_lexem_endl(string nom_fichier_en_min)
     if(fichier_en_min)  // si l'ouverture a réussi
 
         {  
-            string nom_fichier_lexem_endl = "/home/damien/Desktop/lexem_endl.txt";
+            string nom_fichier_lexem_endl = "/home/damien/Workspace/synthese_vhdl/fichier_test/lexem_endl.txt";
  
             // Creation du fichier ou écrasement
             ofstream fichier_lexem_endl(nom_fichier_lexem_endl.c_str(), ios::trunc);

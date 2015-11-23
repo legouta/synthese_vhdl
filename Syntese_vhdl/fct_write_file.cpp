@@ -9,7 +9,7 @@ using namespace std;
 
 void fct_write_file(string code_en_min)
 {
-string nom_fichier_en_min = "/home/damien/Desktop/fichier_en_min.txt";
+string nom_fichier_en_min = "/home/damien/Workspace/synthese_vhdl/fichier_test/fichier_en_min.txt";
  
 // Creation du fichier ou écrasement
 ofstream fichier(nom_fichier_en_min.c_str(), ios::trunc);
