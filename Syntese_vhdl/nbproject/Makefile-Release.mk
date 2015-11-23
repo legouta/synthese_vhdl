@@ -38,7 +38,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/fct_Maj_To_Min.o \
 	${OBJECTDIR}/fct_lexem_endl.o \
 	${OBJECTDIR}/fct_write_file.o \
-	${OBJECTDIR}/main.o
+	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/principal_antoine.o \
+	${OBJECTDIR}/principal_damien.o
 
 
 # C Compiler Flags
@@ -84,6 +86,16 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/principal_antoine.o: principal_antoine.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/principal_antoine.o principal_antoine.cpp
+
+${OBJECTDIR}/principal_damien.o: principal_damien.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/principal_damien.o principal_damien.cpp
 
 # Subprojects
 .build-subprojects:
