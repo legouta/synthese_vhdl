@@ -4,3 +4,36 @@
 /home/damien/Workspace/synthese_vhdl/Syntese_vhdl/build
 /home/damien/Workspace/synthese_vhdl/Syntese_vhdl/nbproject
 /home/damien/Workspace/synthese_vhdl/Syntese_vhdl/dist
+
+
+# Created by https://www.gitignore.io/api/c++
+
+### C++ ###
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
