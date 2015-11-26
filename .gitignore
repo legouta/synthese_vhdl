@@ -1,9 +1,9 @@
 
 # Ignorer tous les fichiers de compilation
 
-/home/damien/Workspace/synthese_vhdl/Syntese_vhdl/build
-/home/damien/Workspace/synthese_vhdl/Syntese_vhdl/nbproject
-/home/damien/Workspace/synthese_vhdl/Syntese_vhdl/dist
+/home/damien/Workspace/synthese_vhdl/Syntese_vhdl/build*
+/home/damien/Workspace/synthese_vhdl/Syntese_vhdl/nbproject*
+/home/damien/Workspace/synthese_vhdl/Syntese_vhdl/dist*
 
 
 # Created by https://www.gitignore.io/api/c++
