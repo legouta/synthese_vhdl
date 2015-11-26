@@ -1,3 +1,27 @@
-zer AZERgfttzg456 67_56 ty_yu65uyt rtgf--QSSDDSSZZZSDFG a
-ziziHHI9 lol_mop
---a
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all; 
+use ieee.std_logic_unsigned.all;
+ENTITY Compteur IS
+PORT (
+  clk,raz :IN std_logic;
+  qs : OUT std_logic_vector(3 downto 0)); -- sortie véritable
+END Compteur;
+ARCHITECTURE aCmpt OF Compteur IS
+SIGNAL q : std_logic_vector(3 downto 0); -- signal intermédiaire
+BEGIN
+-- toujours faire :
+  qs <= q;
+-- et en même temps RAZ synchrone
+  PROCESS(clk) BEGIN
+    IF clk'event and clk='1' THEN
+      IF raz='1' THEN
+        q<=(OTHERS=>'0');
+      ELSE
+        q <= q + 1;
+      END IF;
+    END IF;
+  END PROCESS;
+	qs<=("00"+a)
+  qs <= q;
+END aCmpt;

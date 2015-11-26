@@ -19,6 +19,7 @@
       <itemPath>main.cpp</itemPath>
       <itemPath>principal_antoine.cpp</itemPath>
       <itemPath>principal_damien.cpp</itemPath>
+      <itemPath>test_fct_lexem.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -56,6 +57,8 @@
       </item>
       <item path="principal_damien.cpp" ex="false" tool="1" flavor2="0">
       </item>
+      <item path="test_fct_lexem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -90,6 +93,8 @@
       <item path="principal_antoine.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="principal_damien.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="test_fct_lexem.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

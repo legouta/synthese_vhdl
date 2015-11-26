@@ -40,7 +40,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/fct_write_file.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/principal_antoine.o \
-	${OBJECTDIR}/principal_damien.o
+	${OBJECTDIR}/principal_damien.o \
+	${OBJECTDIR}/test_fct_lexem.o
 
 
 # C Compiler Flags
@@ -96,6 +97,11 @@ ${OBJECTDIR}/principal_damien.o: principal_damien.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/principal_damien.o principal_damien.cpp
+
+${OBJECTDIR}/test_fct_lexem.o: test_fct_lexem.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/test_fct_lexem.o test_fct_lexem.cpp
 
 # Subprojects
 .build-subprojects:
