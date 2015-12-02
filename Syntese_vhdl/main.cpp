@@ -10,6 +10,7 @@
 #include <fstream>
 #include <string>
 #include "fonction.h"
+#include "tree.hh"
 
 using namespace std;
 
