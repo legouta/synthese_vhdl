@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <list>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ void fct_lexem_endl(string nom_fichier_en_min);
 void test_fct_lexem(string nom_fichier_lexem_endl);
 void fct_suppr_double_endl(string nom_fichier_lexem_endl);
 void range_arbre(string nom_fichier_clean);
-
+list<string> fct_liste_lexeme(string nom_fichier_clean);
 
 
 #endif	/* FONCTION_H */
