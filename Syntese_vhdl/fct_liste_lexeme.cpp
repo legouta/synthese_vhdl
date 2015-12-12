@@ -33,11 +33,10 @@ list<string> fct_liste_lexeme(string nom_fichier_clean)
             while(fichier_clean.get(carac))
             {
                 if(carac=='\n')
-                {   cout<<"a    "<<lexem<<endl;
-                    liste_lexem.insert(i,lexem);
+                {   
+                    liste_lexem.push_back(lexem);                    
                     lexem.clear();
-                    cout<<*i<<endl;
-                    i++;  
+
                 }
                 else
                 {
