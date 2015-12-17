@@ -17,14 +17,12 @@ using namespace std;
 list<string> fct_liste_lexeme(string nom_fichier_clean)
 {
     list<string> liste_lexem;
-    list<string>::iterator i;
     char carac;
     string lexem;
     
     
     lexem.clear();
     liste_lexem.clear();
-    i=liste_lexem.begin();
      ifstream fichier_clean(nom_fichier_clean.c_str(), ios::in);  // on ouvre le fichier en lecture
     
     if(fichier_clean)  // si l'ouverture a réussi
