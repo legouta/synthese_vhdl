@@ -15,9 +15,32 @@ list<string>::iterator range_use(list<string>::iterator i,tree<string>& tr, tree
     string lexem;
     lexem=*i;
     
-    /*tree<string>::iterator nom_library;
+    tree<string>::iterator nom_library;
+    tree<string>::iterator extension;
+
     i++;
-    nom_library=tr.append_child(i_lib,*i);
+    nom_library=tr.append_child(i_use,*i);
     i++;
-    return i;*/
+    while(1)
+    {
+        if(*i==".")
+        {
+            i++;
+            extension=tr.append_child(nom_library,*i);
+            i++;
+        }
+        else
+        {
+            if(*i==";")
+            {
+                return(i++);
+            }
+            else
+            {
+                cout<<"erreur parsage USE"<<endl;
+                return i++;                
+            }
+        }
+    }
+ return i;
 }

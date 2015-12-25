@@ -19,6 +19,8 @@ tree<string> range_arbre(list<string> list_lexem)
    tree<string> tr;
    tree<string>::iterator root,i_lib,i_use,i_entity,i_archi;
    string lexem;
+   
+   tr.clear();
 
     root=tr.begin();
     i_lib=tr.insert(root,"library");
@@ -41,7 +43,7 @@ tree<string> range_arbre(list<string> list_lexem)
             i=range_use(i,tr,i_use);
         }
         
-        if (lexem=="entity")
+       /* if (lexem=="entity")
         {
             i=range_entity(i,tr,i_entity);
         }
@@ -49,7 +51,7 @@ tree<string> range_arbre(list<string> list_lexem)
         if (lexem=="architecture")
         {
             i=range_archi(i,tr,i_archi);
-        }
+        }*/
         
        
     }
