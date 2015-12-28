@@ -24,6 +24,8 @@ list<string>::iterator range_library(list<string>::iterator, tree<string>&, tree
 list<string>::iterator range_use(list<string>::iterator, tree<string>&, tree<string>::iterator);
 list<string>::iterator range_entity(list<string>::iterator, tree<string>&, tree<string>::iterator);
 list<string>::iterator range_archi(list<string>::iterator, tree<string>&, tree<string>::iterator);
+list<string>::iterator range_port(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_ports,string str_nom_port);
+
 
 
 #endif	/* FONCTION_H */

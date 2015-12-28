@@ -43,12 +43,12 @@ tree<string> range_arbre(list<string> list_lexem)
             i=range_use(i,tr,i_use);
         }
         
-       /* if (lexem=="entity")
+        if (lexem=="entity")
         {
             i=range_entity(i,tr,i_entity);
         }
         
-        if (lexem=="architecture")
+      /*  if (lexem=="architecture")
         {
             i=range_archi(i,tr,i_archi);
         }*/
