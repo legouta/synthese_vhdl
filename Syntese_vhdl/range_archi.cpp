@@ -15,9 +15,28 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
     string lexem;
     lexem=*i;
     
-    /*tree<string>::iterator nom_library;
+    tree<string>::iterator nom_archi;
+    tree<string>::iterator nom_entity;
+    tree<string>::iterator loc;
     i++;
-    nom_library=tr.append_child(i_lib,*i);
+    
+    nom_archi=tr.append_child(i_archi,*i);
     i++;
-    return i;*/
+    if(*i=="of")
+    {
+        i++;
+        
+        loc=find(tr.begin(), tr.end(), "entity" );
+        loc++;
+        if (*loc==*i)
+        {
+        nom_entity=tr.append_child(nom_archi,*i);
+        }
+        else
+        {
+            cout << "l'architecture "<< *i <<" ne correspond à aucune entity" << endl;
+        }
+        
+    }
+    return i;
 }
