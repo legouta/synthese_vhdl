@@ -58,9 +58,9 @@ list<string>::iterator range_instructions_concurentes(list<string>::iterator i,t
     a=i;
     b=i;
     i_affectation=tr.append_child(i_range_instructions_concurentes,"affectation");
-    //while(*b!="process")
+    ///while(*b!="process")
     {
-      //  b++;
+       // b++;
         a=range_affectation(i,tr,i_affectation);
         //b++;
     }
