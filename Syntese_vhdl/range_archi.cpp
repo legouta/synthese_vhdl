@@ -14,6 +14,7 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
     
     string lexem;
     lexem=*i;
+    list<string>::iterator j;
     
     tree<string>::iterator nom_archi;
     tree<string>::iterator nom_entity;
@@ -62,26 +63,6 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                                 if(*i==";")
                                 {
                                    i++;
-                                   
-                                        if(*i=="begin")
-                                        {
-                                             i++;
-                                             if(*i != "process")
-                                             {
-                                                 i_range_instructions_concurentes=tr.append_child(i_archi,"instructions_concurentes");
-                                                 i=range_instructions_concurentes(i,tr,i_range_instructions_concurentes);
-                                             }
-                                             else
-                                             {
-                                                 i_range_instructions_sequentielles=tr.append_child(i_archi,"instructions_sequentielles");
-                                                 i=range_instrcutions_sequentielles(i,tr,i_range_instructions_sequentielles);
-                                             }
-                                        }
-                                        else
-                                        {
-                                            cout<<"erreur architecture : manque 'begin'"<<endl;
-                                            return i;                            
-                                        }
                                 }
                                 else
                                 {
@@ -91,34 +72,49 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                             }
                              
                         }
-                        else
-                        {
-                            cout<<"erreur architecture : manque 'begin'"<<endl;
-                            return i;  
-                        }
+                        
                         
                     }
-                    else
+                    if(*i=="begin")
                     {
                         i++;
-                         if(*i != "process")
-                         {
-                            i_range_instructions_concurentes=tr.append_child(i_archi,"instructions_concurentes");
-                            i=range_instructions_concurentes(i,tr,i_range_instructions_concurentes);
-                         }
-                         else
-                         {
-                            i_range_instructions_sequentielles=tr.append_child(i_archi,"instructions_sequentielles");
-                            i=range_instrcutions_sequentielles(i,tr,i_range_instructions_sequentielles);
-                         }
+                        j=i;
+                        j++;
+                        cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j <<endl;
+
+                        /*while((*i!="end")) //&& (*j!=*nom_archi))
+                        {
+                            if(*i != "process")
+                            {
+                                i_range_instructions_concurentes=tr.append_child(i_archi,"instructions_concurentes");
+                                i=range_instructions_concurentes(i,tr,i_range_instructions_concurentes);
+                            }
+                            else
+                            {
+                                i_range_instructions_sequentielles=tr.append_child(i_archi,"instructions_sequentielles");
+                                i=range_instrcutions_sequentielles(i,tr,i_range_instructions_sequentielles);
+                            }
+                         i++;
+                         //j++;
+                         //cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j;
+                        }
+                       
+                        */
                     }
+                             
+                    else
+                    {
+                        cout<<"erreur architecture : manque 'begin'"<<endl;
+                        return i;                            
+                    }
+                    
         }
         else
         {
             cout<<"erreur architecture : manque 'is'"<<endl;
             return i;
         }
-    }
+    }   
     else
     {
        cout<<"erreur architecture : manque 'of'"<<endl;

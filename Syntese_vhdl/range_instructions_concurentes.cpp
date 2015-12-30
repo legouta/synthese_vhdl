@@ -19,6 +19,7 @@ list<string>::iterator range_instructions_concurentes(list<string>::iterator i,t
 {
     string lexem;
     lexem=*i;
+    int c=0, d=0;
     list<string>::iterator a, b;
     tree<string>::iterator i_affectation;
     tree<string>::iterator i_affectation_selective;
@@ -28,13 +29,14 @@ list<string>::iterator range_instructions_concurentes(list<string>::iterator i,t
 
     a=i;
         
-    while(*a!="end")
+    while(*a!="process")
             {
                 if(*a=="with")
                 {  
                     a++;
                     i_affectation_conditionelle=tr.append_child(i_range_instructions_concurentes,"affectation_conditionelle");
-                    //a=range_affectation_conditionelle(i,tr,i_range_affectation_conditionelle);        
+                    //a=range_affectation_conditionelle(i,tr,i_range_affectation_conditionelle);
+                    c=1;
                     return a;
                 }
                 
@@ -45,26 +47,35 @@ list<string>::iterator range_instructions_concurentes(list<string>::iterator i,t
                         a++;
                         i_affectation_selective=tr.append_child(i_range_instructions_concurentes,"affectation_selective");
                         //a=range_affectation_conditionelle(i,tr,i_range_affectation_conditionelle);
+                        c=1;
                         return a;
-                    }
-                    else
-                    {
-                        
-                    }
-                            
+                    }                    
+                }
+                if(*a=="<=")
+                {
+                    d=1;
                 }
                 a++;
             }
-    a=i;
-    b=i;
-    i_affectation=tr.append_child(i_range_instructions_concurentes,"affectation");
-    ///while(*b!="process")
-    {
-       // b++;
+    if(c==0 && d==1) 
+    {   
+        a=i;
+        i_affectation=tr.append_child(i_range_instructions_concurentes,"affectation");
         a=range_affectation(i,tr,i_affectation);
-        //b++;
+        //a++;
+        //while(*a!=";")
+        {
+        //    if(*a)
+        //a=range_affectation(i,tr,i_affectation);
+        }
+    return a;
+    cout << " mes couilles " << *a << endl;
+    }
+    else 
+    {
+        cout << "erreur d'affectation 'pas de symbole d'affetation'"<<endl;
+        return a;
     }
     
-    return a;
   
 }
