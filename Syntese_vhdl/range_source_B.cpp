@@ -44,10 +44,11 @@ list<string>::iterator range_source_B(list<string>::iterator i,tree<string>& tr,
             if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor")
             {
                 a++;
-                i_source_B=tr.append_child(i_source,"source");
                 
                 if(c==0)
-                {   
+                {  
+                                    i_source_B=tr.append_child(i_source,"source");
+
                     range_source_B(a,tr,i_source_B);
                 }
 

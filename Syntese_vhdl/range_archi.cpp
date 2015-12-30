@@ -75,14 +75,17 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                         
                         
                     }
+            cout <<"ici";
+            cout << *i<< endl;
+            
                     if(*i=="begin")
                     {
                         i++;
-                        j=i;
-                        j++;
-                        cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j <<endl;
-
-                        /*while((*i!="end")) //&& (*j!=*nom_archi))
+                       // j=i;
+                        //j++;
+                        //cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j <<endl;
+                        cout<<"ici";
+                        //while((*i!="end")) //&& (*j!=*nom_archi))
                         {
                             if(*i != "process")
                             {
@@ -94,12 +97,12 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                                 i_range_instructions_sequentielles=tr.append_child(i_archi,"instructions_sequentielles");
                                 i=range_instrcutions_sequentielles(i,tr,i_range_instructions_sequentielles);
                             }
-                         i++;
+                         //i++;
                          //j++;
                          //cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j;
                         }
                        
-                        */
+                        //*/
                     }
                              
                     else

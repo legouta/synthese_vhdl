@@ -49,9 +49,10 @@ list<string>::iterator range_affectation(list<string>::iterator i,tree<string>& 
         if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor")
         {
             a--;
-            i_source=tr.append_child(i_affectation,"source");
+            
             if(c==0)
-            {    
+            { 
+                i_source=tr.append_child(i_affectation,"source");
                 range_source_A(a,tr,i_source);
             }
             a++;
