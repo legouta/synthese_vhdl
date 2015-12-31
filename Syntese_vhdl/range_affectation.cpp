@@ -22,6 +22,7 @@ list<string>::iterator range_affectation(list<string>::iterator i,tree<string>& 
     lexem=*i;
     int b=0, c=0, d=0;
     list<string>::iterator a;
+    list<string>::iterator x;
     tree<string>::iterator i_destination;
     tree<string>::iterator i_source;
     tree<string>::iterator i_source_a;
@@ -40,33 +41,34 @@ list<string>::iterator range_affectation(list<string>::iterator i,tree<string>& 
         d++;
         if(*a=="(")
         {
-            a++;
+            cout << " en compte ou pas ? : " << *a<<endl;
             a=detection_parenthese(a,tr);
             a++;
             b=1;
+            cout <<"blabla----- " << *a << endl;
             
         }
-        if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor")
+        if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor" || *a=="*")
         {
             a--;
-            
+            cout<< "ski----"<<*a<<endl;
             if(c==0)
             { 
-                i_source=tr.append_child(i_affectation,"source");
+                i_source=tr.append_child(i_affectation,"sources");
                 range_source_A(a,tr,i_source);
             }
             a++;
-            range_source_A(a,tr,i_source);
+            i_operator=tr.append_child(i_source,*a);
             a++;
             c=1;
-            range_source_B(a,tr,i_source);
+            a=range_source_B(a,tr,i_source);
         }
         if(*a==";" && b==1 && c==0)
         {
           a=i;
           a++;
           a++;
-          a++;
+          
           
         }
         if(*a=="not")
@@ -76,11 +78,14 @@ list<string>::iterator range_affectation(list<string>::iterator i,tree<string>& 
         
     a++;
     }
-    if(d==1)
+    x=a;
+    x--;
+    x--;
+    if(d==1 && *x=="<=")
     {
-        a--;
+        x++;
         i_source=tr.append_child(i_affectation,"source");
-        i_source_a=tr.append_child(i_source,*a);
+        i_source_a=tr.append_child(i_source,*x);
     }
    
         /*

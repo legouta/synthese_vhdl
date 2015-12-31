@@ -28,6 +28,7 @@ list<string>::iterator range_source_A(list<string>::iterator i,tree<string>& tr,
     tree<string>::iterator i_affectation;
     
     a=i;
+    //a--;
     if(*a==")")
     {
         a--;
@@ -35,27 +36,27 @@ list<string>::iterator range_source_A(list<string>::iterator i,tree<string>& tr,
         {
             if(*a==")")
             {
-                a--;
+                //a--;
                 a=detection_parenthese_envers(a,tr);
                 a--;
                 b=1;
             
             }
-            if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor")
+            if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor" || *a=="*")
             {
-                a--;
+                a++; // on est sur c
                 
                 if(c==0)
                 {   
-                                    i_source_A=tr.append_child(i_source,"source");
+                    i_source_A=tr.append_child(i_source,"sources_bis");
 
                     range_source_B(a,tr,i_source_A);
                 }              
-                a++;
+                a--;
                 i_operator=tr.append_child(i_source_A,*a);
-                a++;
+                a--;
                 c=1;
-                range_source_A(a,tr,i_source_A);
+                a=range_source_A(a,tr,i_source_A);
                 
                 
             }
@@ -73,8 +74,7 @@ list<string>::iterator range_source_A(list<string>::iterator i,tree<string>& tr,
     else
     {
       i_source_A=tr.append_child(i_source,*a);
-      cout << "range source a sans parent"<< endl;
     }
     
-    
+    return a;
 }

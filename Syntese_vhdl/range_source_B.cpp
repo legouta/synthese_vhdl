@@ -35,28 +35,28 @@ list<string>::iterator range_source_B(list<string>::iterator i,tree<string>& tr,
         {
             if(*a=="(")
             {
-                a++;
+                //a++;
                 a=detection_parenthese(a,tr);
                 a++;
                 b=1;
             
             }
-            if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor")
+            if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor" || *a=="*")
             {
-                a++;
+                a--;
                 
                 if(c==0)
                 {  
-                                    i_source_B=tr.append_child(i_source,"source");
+                    i_source_B=tr.append_child(i_source,"sources_bis");
 
-                    range_source_B(a,tr,i_source_B);
+                    range_source_A(a,tr,i_source_B);
                 }
 
-                a--;
+                a++;
                 i_operator=tr.append_child(i_source_B,*a);
-                a--;
+                a++;
                 c=1;
-                range_source_A(a,tr,i_source_B);
+                a=range_source_B(a,tr,i_source_B);
                 
             }
             if(*a==";" && b==1 && c==0)
@@ -67,13 +67,13 @@ list<string>::iterator range_source_B(list<string>::iterator i,tree<string>& tr,
                 
             }
             
-            a--;
+            a++;
         }  
     }
     else
     {
       i_source_B=tr.append_child(i_source,*a);
     }
-    
+    return a;
     
 }

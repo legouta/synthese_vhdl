@@ -21,14 +21,16 @@ list<string>::iterator detection_parenthese_envers(list<string>::iterator i,tree
     list<string>::iterator a;
     
     a=i;
-    
+    a--;
     
     while(*a!="(")
     {
+        
         if(*a==")")
         {
             a=detection_parenthese_envers(a,tr);
         }
+        a--;
     }
         
     return a;

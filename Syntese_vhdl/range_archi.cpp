@@ -75,7 +75,7 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                         
                         
                     }
-            cout <<"ici";
+            //cout <<"ici range archi"<<*i<< endl;
             cout << *i<< endl;
             
                     if(*i=="begin")
@@ -84,7 +84,7 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                        // j=i;
                         //j++;
                         //cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j <<endl;
-                        cout<<"ici";
+                        cout<<"ici debut begin"<<endl;
                         //while((*i!="end")) //&& (*j!=*nom_archi))
                         {
                             if(*i != "process")

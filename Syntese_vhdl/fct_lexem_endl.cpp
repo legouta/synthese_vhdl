@@ -13,6 +13,8 @@ void fct_lexem_endl(string nom_fichier_en_min)
     char carac_preced;
     char carac_2preced;
     char carac_3preced;
+    char carac_4preced;
+    char carac_5preced;
     int Current_State = 0;
     int i=0;
     
@@ -144,9 +146,23 @@ void fct_lexem_endl(string nom_fichier_en_min)
                             Current_State=1;
                             i=0;
                         }
-                        
                         else if(((carac >= 0x61 and carac <= 0x7A) 
                           or (carac >='0' and carac <= '9'))and i==4)
+                        {
+                            fichier_lexem_endl << endl << carac_4preced  << carac_3preced <<  carac_2preced <<  carac_preced << endl;
+                            Current_State=1;
+                            i=0;
+                        }
+                        else if(((carac >= 0x61 and carac <= 0x7A) 
+                          or (carac >='0' and carac <= '9'))and i==5)
+                        {
+                            fichier_lexem_endl << endl << carac_5preced << carac_4preced  << carac_3preced <<  carac_2preced <<  carac_preced << endl;
+                            Current_State=1;
+                            i=0;
+                        }
+                        
+                        else if(((carac >= 0x61 and carac <= 0x7A) 
+                          or (carac >='0' and carac <= '9'))and i==6)
                         {
                             Current_State=7;
                             i=0;
@@ -233,8 +249,8 @@ void fct_lexem_endl(string nom_fichier_en_min)
                     break;
                 }
                 
-                
-                
+                carac_5preced=carac_4preced;
+                carac_4preced=carac_3preced;
                 carac_3preced=carac_2preced;
                 carac_2preced=carac_preced;
                 carac_preced=carac;                    

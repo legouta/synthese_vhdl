@@ -69,7 +69,6 @@ list<string>::iterator range_instructions_concurentes(list<string>::iterator i,t
         //a=range_affectation(i,tr,i_affectation);
         }
     return a;
-    cout << " mes couilles " << *a << endl;
     }
     else 
     {
