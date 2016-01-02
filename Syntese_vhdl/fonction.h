@@ -26,7 +26,7 @@ list<string>::iterator range_entity(list<string>::iterator, tree<string>&, tree<
 list<string>::iterator range_archi(list<string>::iterator, tree<string>&, tree<string>::iterator);
 list<string>::iterator range_port(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_ports,string str_nom_port);
 list<string>::iterator range_signal(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_nom_signal);
-list<string>::iterator range_instructions_concurentes(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_range_instructions_concurentes);
+list<string>::iterator range_instructions_concurentes(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_range_instructions_concurentes, string nom_archi);
 list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_range_instructions_sequentielles);
 list<string>::iterator range_affectation(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_affectation);
 list<string>::iterator detection_parenthese(list<string>::iterator i,tree<string>& tr);

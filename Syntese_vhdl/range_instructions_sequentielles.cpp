@@ -17,6 +17,20 @@ using namespace std;
 
 list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_range_instructions_sequentielles)
 {
-   
-    return i;
+    list<string>::iterator a,b;
+    a=i;
+    b=a;
+    b++;
+    
+    while((*b!="process")) 
+    {
+        a++;
+        b++;
+    }
+    //cout <<" dans range instr seq a vaut: "<<*a<<endl;
+    //cout <<" dans range instr seq b vaut: "<<*b<<endl;
+    b++; // b sur point virgule
+    b++;
+    
+    return b;
 }

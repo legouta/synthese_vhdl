@@ -16,7 +16,7 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
     lexem=*i;
     list<string>::iterator j;
     
-    tree<string>::iterator nom_archi;
+    tree<string>::iterator i_nom_archi;
     tree<string>::iterator nom_entity;
     tree<string>::iterator loc;
     tree<string>::iterator i_declaration;
@@ -27,7 +27,7 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
     
     i++;
     
-    nom_archi=tr.append_child(i_archi,*i);
+    i_nom_archi=tr.append_child(i_archi,*i);
     i++;
     if(*i=="of")
     {
@@ -37,7 +37,7 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
         loc++;
         if (*loc==*i)
         {
-        nom_entity=tr.append_child(nom_archi,*i);
+        nom_entity=tr.append_child(i_nom_archi,*i);
         }
         else
         {
@@ -81,25 +81,35 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                     if(*i=="begin")
                     {
                         i++;
-                       // j=i;
-                        //j++;
+                        j=i;
+                        j++;
                         //cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j <<endl;
-                        cout<<"ici debut begin"<<endl;
-                        //while((*i!="end")) //&& (*j!=*nom_archi))
+                        //cout<<"ici debut begin"<<endl;
+                        
+                        
+                        while((*i!="end") && (*j!=*i_nom_archi))
+                        //while(*j!=*i_nom_archi)    
                         {
                             if(*i != "process")
                             {
-                                i_range_instructions_concurentes=tr.append_child(i_archi,"instructions_concurentes");
-                                i=range_instructions_concurentes(i,tr,i_range_instructions_concurentes);
+                                loc=find(tr.begin(), tr.end(), "instructions_concurentes" );                                
+                                if (loc==NULL)
+                                {                                
+                                    i_range_instructions_concurentes=tr.append_child(i_archi,"instructions_concurentes");
+                                }                                
+                                    i=range_instructions_concurentes(i,tr,i_range_instructions_concurentes,*i_nom_archi);                                
                             }
                             else
                             {
+                                cout<< " vue process i vaut : "<< *i << endl;
                                 i_range_instructions_sequentielles=tr.append_child(i_archi,"instructions_sequentielles");
                                 i=range_instrcutions_sequentielles(i,tr,i_range_instructions_sequentielles);
+                                
                             }
                          //i++;
-                         //j++;
-                         //cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j;
+                         j=i;
+                         j++;
+                         cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j <<endl;
                         }
                        
                         //*/

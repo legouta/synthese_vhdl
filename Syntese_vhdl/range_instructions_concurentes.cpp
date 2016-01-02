@@ -15,11 +15,11 @@
 using namespace std;
 
 
-list<string>::iterator range_instructions_concurentes(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_range_instructions_concurentes)
+list<string>::iterator range_instructions_concurentes(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_range_instructions_concurentes, string nom_archi)
 {
     string lexem;
     lexem=*i;
-    int c=0, d=0;
+    int c=0, d=0, e=0;
     list<string>::iterator a, b;
     tree<string>::iterator i_affectation;
     tree<string>::iterator i_affectation_selective;
@@ -28,9 +28,15 @@ list<string>::iterator range_instructions_concurentes(list<string>::iterator i,t
 
 
     a=i;
+    b=i;
+    b++;
         
-    while(*a!="process")
+    while (*a!="end" && *b!=nom_archi )
             {
+                if(*a=="with")
+                {
+                    
+                }
                 if(*a=="with")
                 {  
                     a++;
@@ -56,25 +62,26 @@ list<string>::iterator range_instructions_concurentes(list<string>::iterator i,t
                     d=1;
                 }
                 a++;
+                b=a;
+                b++;
             }
-    if(c==0 && d==1) 
+    if(c==0 && d==1 && e==0) 
     {   
-        a=i;
         i_affectation=tr.append_child(i_range_instructions_concurentes,"affectation");
         a=range_affectation(i,tr,i_affectation);
-        //a++;
-        //while(*a!=";")
-        {
-        //    if(*a)
-        //a=range_affectation(i,tr,i_affectation);
-        }
-    return a;
+        a++;
+        return a;
+
     }
+    
+    
     else 
     {
         cout << "erreur d'affectation 'pas de symbole d'affetation'"<<endl;
-        return a;
+        return i;
     }
-    
+     
+      return a;
+ } 
   
-}
+
