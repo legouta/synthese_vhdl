@@ -16,6 +16,7 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
     lexem=*i;
     list<string>::iterator j;
     tree<string>::iterator i_nom_archi;
+    tree<string>::iterator i_process;
     tree<string>::iterator nom_entity;
     tree<string>::iterator loc;
     tree<string>::iterator i_declaration;
@@ -112,8 +113,9 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                             else
                             {
                                 cout<< " vue process i vaut : "<< *i << endl;
-                                i_range_instructions_sequentielles=tr.append_child(i_nom_archi,"instructions_sequentielles");
-                                i=range_instrcutions_sequentielles(i,tr,i_range_instructions_sequentielles);
+                                i_process=tr.append_child(i_nom_archi,"process");
+                                i_range_instructions_sequentielles=tr.append_child(i_process,"instructions_sequentielles");
+                                i=range_instrcutions_sequentielles(i,tr,i_range_instructions_sequentielles,i_process);
                                 
                             }
                          //i++;
