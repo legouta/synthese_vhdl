@@ -28,6 +28,7 @@ string    chemin_3 = "/home/damien/Workspace/synthese_vhdl/fichier_test/lexem_en
 string    chemin_4 = "/home/damien/Workspace/synthese_vhdl/fichier_test/fichier_clean.txt";
 list<string> a;
 list<string>::const_iterator i=a.begin();
+tree<string>::iterator loc;
 tree<string> tr;
 
 
@@ -48,12 +49,12 @@ void print_tree(const tree<string>& tr, tree<string>::pre_order_iterator it, tre
 	{
 	if(!tr.is_valid(it)) return;
 	int rootdepth=tr.depth(it);
-	std::cout << "-----" << std::endl;
+	cout << "-----" << endl<<"   ";
 	while(it!=end) {
 		for(int i=0; i<tr.depth(it)-rootdepth; ++i) 
-			std::cout << "  ";
-		std::cout << (*it) << std::endl << std::flush;
+			std::cout << "~ ";
+		cout <<(*it) << endl << "   "<< flush;
 		++it;
 		}
-	std::cout << "-----" << std::endl;
+	cout << "-----" << endl;
 	}

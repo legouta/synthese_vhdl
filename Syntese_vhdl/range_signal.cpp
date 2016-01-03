@@ -28,9 +28,13 @@ list<string>::iterator range_signal(list<string>::iterator i,tree<string>& tr, t
     a++;
     i_type_signal=tr.append_child(i_nom_signal,*a);
     a++;
-        
-        
-            while(1)
+    if(*a==";")
+    {
+        return a;
+    }    
+    else if (*a=="(")    
+    {
+        while(1)
             {
                 a++;
                 if(*a==")")
@@ -44,6 +48,10 @@ list<string>::iterator range_signal(list<string>::iterator i,tree<string>& tr, t
                     cout<<"complement : "<<*a<<endl;               
                 }
             }
-        
+    }
+    else
+    {
+        cout<<"problème de déclaration de signal"<<endl;
+    }
   
 }

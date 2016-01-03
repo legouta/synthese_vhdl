@@ -15,7 +15,6 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
     string lexem;
     lexem=*i;
     list<string>::iterator j;
-    
     tree<string>::iterator i_nom_archi;
     tree<string>::iterator nom_entity;
     tree<string>::iterator loc;
@@ -50,27 +49,38 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
             i++;
                     if(*i !="begin")
                     {
-                        i_declaration=tr.append_child(i_archi,"declaration");
+                        i_declaration=tr.append_child(i_nom_archi,"declaration");
                         i_type_declaration=tr.append_child(i_declaration,*i);
-                        if(*i=="signal")
+                        if(*i=="signal" )
                         {
-                            i++;
-                            i_nom_signal=tr.append_child(i_type_declaration,*i);
-                            i++;
-                            if(*i==":")
+                            j=i;
+                            j++;
+                            while(*i=="signal")
                             {
-                                i=range_signal(i,tr,i_nom_signal);
-                                if(*i==";")
+                                i++;
+                                j=i;
+                                j++;
+                                if(*j==":")
                                 {
-                                   i++;
+                                    i_nom_signal=tr.append_child(i_type_declaration,*i);                                
+                                    i++;                                
+                                    i=range_signal(i,tr,i_nom_signal);
+                                    if(*i==";")
+                                    {
+                                       i++;
+                                    }
+                                    else
+                                    {
+                                        cout<<"erreur architecture : manque ';' dans la declaration"<<endl;
+                                        return i;
+                                    }
                                 }
-                                else
-                                {
-                                    cout<<"erreur architecture : manque ';' dans la declaration"<<endl;
-                                    return i;
+                                else if (*j==",")
+                                {                                    
+                                    i=range_multi_signaux(i,tr,i_nom_signal,i_type_declaration); //retourne le point virgule de la ligne sur laquelle il est
+                                    i++;
                                 }
-                            }
-                             
+                            } 
                         }
                         
                         
@@ -93,16 +103,16 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                             if(*i != "process")
                             {
                                 loc=find(tr.begin(), tr.end(), "instructions_concurentes" );                                
-                                if (loc==NULL)
+                                if (*loc!="instructions_concurentes")
                                 {                                
-                                    i_range_instructions_concurentes=tr.append_child(i_archi,"instructions_concurentes");
+                                    i_range_instructions_concurentes=tr.append_child(i_nom_archi,"instructions_concurentes");
                                 }                                
                                     i=range_instructions_concurentes(i,tr,i_range_instructions_concurentes,*i_nom_archi);                                
                             }
                             else
                             {
                                 cout<< " vue process i vaut : "<< *i << endl;
-                                i_range_instructions_sequentielles=tr.append_child(i_archi,"instructions_sequentielles");
+                                i_range_instructions_sequentielles=tr.append_child(i_nom_archi,"instructions_sequentielles");
                                 i=range_instrcutions_sequentielles(i,tr,i_range_instructions_sequentielles);
                                 
                             }
