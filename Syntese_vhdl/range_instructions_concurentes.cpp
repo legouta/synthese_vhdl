@@ -33,22 +33,18 @@ list<string>::iterator range_instructions_concurentes(list<string>::iterator i,t
         
     while (*a!="end" && *b!=nom_archi )
             {
-                if(*a=="with")
-                {
-                    
-                }
-                if(*a=="with")
+                if(*a=="when")
                 {  
                     a++;
                     i_affectation_conditionelle=tr.append_child(i_range_instructions_concurentes,"affectation_conditionelle");
                     //a=range_affectation_conditionelle(i,tr,i_range_affectation_conditionelle);
-                    c=1;
+                    a++;
                     return a;
                 }
                 
                 else
                 {
-                    if(*a=="when")
+                    if(*a=="with")
                     {
                         a++;
                         i_affectation_selective=tr.append_child(i_range_instructions_concurentes,"affectation_selective");

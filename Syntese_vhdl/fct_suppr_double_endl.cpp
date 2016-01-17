@@ -65,7 +65,8 @@ void fct_suppr_double_endl(string nom_fichier_lexem_endl)
                                 or  (carac_preced=='/' and carac=='=')
                                 or  (carac_preced=='>' and carac=='=')
                                 or  (carac_preced=='*' and carac=='*')
-                                or  (carac_preced=='=' and carac=='>'))
+                                or  (carac_preced=='=' and carac=='>')
+                                or  (carac_preced==':' and carac=='='))
                         {
                             fichier_clean << carac;
                         }

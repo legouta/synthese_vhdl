@@ -15,15 +15,17 @@
 using namespace std;
 
 
-list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_range_instructions_sequentielles, tree<string>::iterator i_process)
+list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_process)
 {
     list<string>::iterator a,b,c;
     tree<string>::iterator i_liste_sensi;
     tree<string>::iterator i_menbre_liste;
     tree<string>::iterator i_declaration;
     tree<string>::iterator i_type_declaration;
-    tree<string>::iterator i_nom_signal;
-    a=i;
+    tree<string>::iterator i_nom_variable;
+    tree<string>::iterator i_affectation;
+    tree<string>::iterator i_range_instructions_sequentielles;
+    tree<string>::iterator i_affectation_conditionnelle;
     b=a;
     b++;
     if(*b=="(")
@@ -45,17 +47,20 @@ list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i
         cout << " erreur process manque liste de sensibilité"<<endl;
     }
    
-     b++;   
+     b++;
+     cout<<"on est avant begin du process, b vaut :"<<*b<<endl;
         if(*b !="begin")
-        {
+        {   
+            cout<<"on detecte begin du process"<<endl;
             i_declaration=tr.append_child(i_process,"declaration");
             i_type_declaration=tr.append_child(i_declaration,*b);
-            cout << "apres declaration signal que vaut b ? :" << *b << endl;
-            if(*b=="signal" )
+            cout << "apres declaration variable que vaut b ? :" << *b << endl;
+            if(*b=="variable" )
             {
+                cout<<"on detecte declaration de variable"<<endl;
                 c=b;
                 c++;
-                while(*b=="signal")
+                while(*b=="variable")
                 {
                     b++;
                     c=b;
@@ -63,36 +68,64 @@ list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i
 
                     if(*c==":")
                     {
-                        i_nom_signal=tr.append_child(i_type_declaration,*b);                                
+                        i_nom_variable=tr.append_child(i_type_declaration,*b);                                
                         b++;                                
-                        b=range_signal(b,tr,i_nom_signal);
+                        b=range_variable(b,tr,i_nom_variable);
                         if(*b==";")
                         {
                             b++;
                         }
                         else
                         {
-                            cout<<"erreur architecture : manque ';' dans la declaration"<<endl;
+                            cout<<"erreur architecture, process : manque ';' dans la declaration des variables"<<endl;
                             return b;
                         }
                     }
                     else if (*c==",")
                     {                                    
-                        b=range_multi_signaux(b,tr,i_nom_signal,i_type_declaration); //retourne le point virgule de la ligne sur laquelle il est
+                        b=range_multi_variables(b,tr,i_nom_variable,i_type_declaration); //retourne le point virgule de la ligne sur laquelle il est
                         b++;
                     }
                 } 
             }
         }
-        
- while((*b!="process")) 
+ cout<<"avant instructions séquentielles (apres rangement variables), b vaut : "<<*b<<endl;       
+ if(*b=="begin")
+ {
+     i_range_instructions_sequentielles=tr.append_child(i_process,"instructions_sequentielles");
+     b++;
+     c=b;
+     c++;
+     while((*b!="end" && *c!="process")) 
     {
-        a++;
+         cout<<"dans while range instruc seq : "<<*b<<" "<<*c<<endl;
+         if(*b=="if")
+         {
+             i_affectation_conditionnelle=tr.append_child(i_range_instructions_sequentielles,"affectation_conditionnelle");
+         }
+         else if(*b=="case")
+         {
+             
+         }
+        // cout<<"b :"<<*b<<"c :"<<*c<<endl;
+         else if(*c=="<=" || *c==":=")
+         {
+            cout<<"on range des affectations séquentielles"<<endl;
+            i_affectation=tr.append_child(i_range_instructions_sequentielles,"affectation");
+            b=range_affectation(b,tr,i_affectation);
+         }
+         
         b++;
+        c=b;
+        c++;
     }
-    cout <<" dans range instr seq b vaut: "<<*b<<endl;
-    b++; // b sur point virgule
-    b++;
-    
-    return b;
+   // cout <<" dans range instr seq b vaut: "<<*b<<endl;
+    c++; // b sur point virgule
+    c++;
+ }
+ else
+ {
+     cout<<"erreur : manque begin dans le process"<<endl;
+ }    
+    return c;
 }

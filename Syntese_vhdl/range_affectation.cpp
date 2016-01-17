@@ -41,17 +41,17 @@ list<string>::iterator range_affectation(list<string>::iterator i,tree<string>& 
         d++;
         if(*a=="(")
         {
-            cout << " en compte ou pas ? : " << *a<<endl;
+           // cout << " en compte ou pas ? : " << *a<<endl;
             a=detection_parenthese(a,tr);
             a++;
             b=1;
-            cout <<"blabla----- " << *a << endl;
+         //   cout <<"blabla----- " << *a << endl;
             
         }
         if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor" || *a=="*")
         {
             a--;
-            cout<< "ski----"<<*a<<endl;
+          //  cout<< "ski----"<<*a<<endl;
             if(c==0)
             { 
                 i_source=tr.append_child(i_affectation,"sources");
@@ -81,12 +81,18 @@ list<string>::iterator range_affectation(list<string>::iterator i,tree<string>& 
     x=a;
     x--;
     x--;
-    if(d==1 && *x=="<=")
+    if(d==1 && (*x=="<=" || *x==":="))
     {
         x++;
         i_source=tr.append_child(i_affectation,"source");
         i_source_a=tr.append_child(i_source,*x);
     }
+   /* if(d==1 && (*x==":="))
+    {
+        x++;
+        i_source=tr.append_child(i_affectation,"source");
+        i_source_a=tr.append_child(i_source,*x);
+    }*/
    
         /*
         if (*a=="+" || *a=="-" || *a=="and" || *a=="not" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor" || *a=="abs")
