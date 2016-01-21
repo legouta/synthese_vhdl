@@ -17,6 +17,8 @@ using namespace std;
 list<string> fct_liste_lexeme(string nom_fichier_clean)
 {
     list<string> liste_lexem;
+    list<string>::iterator a,c;
+    string b;
     char carac;
     string lexem;
     
@@ -43,5 +45,75 @@ list<string> fct_liste_lexeme(string nom_fichier_clean)
                 
             }
         }
+     a=liste_lexem.begin();
+     while(a!=liste_lexem.end())
+     {
+         if(*a=="'")
+         {
+            a++;
+            if(*a=="event")
+            {
+                //on fait rien
+            }
+            else
+            {
+                a++;
+                if(*a=="'")
+                {
+                    a--;
+                    a--;
+                    b=*a;
+                    c=a;
+                    a++;
+                    liste_lexem.erase(c);
+                    b=b+*a;
+                    c=a;
+                    a++;
+                    liste_lexem.erase(c);
+                    b=b+*a;
+                    *a=b;
+                    //cout<<b<<endl;
+                }
+                else
+                {
+                    cout<<"erreur, manque la fermeture d'apostrophe : '";
+                }
+            }
+                 
+         }
+         if(*a=="\"") //on teste si le lexeme vaut : "
+         {
+            a++;           
+            a++;
+            if(*a=="\"")
+            {
+                 a--;
+                 a--;
+                 b=*a;
+                 c=a;
+                 a++;
+                 liste_lexem.erase(c);
+                 b=b+*a;
+                 c=a;
+                 a++;
+                 liste_lexem.erase(c);
+                 b=b+*a;
+                 *a=b;
+                //cout<<b<<endl;
+            }
+            else
+            {
+                cout<<"erreur, manque la fermeture de guillemet : ''";
+            }
+            }
+          a++;       
+         }
+     a=liste_lexem.begin();
+     while(a!=liste_lexem.end())
+     {
+         cout<<*a<<endl;
+         a++;
+     }
+     
      return liste_lexem;
 }

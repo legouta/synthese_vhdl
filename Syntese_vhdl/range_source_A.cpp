@@ -42,7 +42,8 @@ list<string>::iterator range_source_A(list<string>::iterator i,tree<string>& tr,
                 b=1;
             
             }
-            if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor" || *a=="*")
+            if(*a=="+" || *a=="-" || *a=="and" || *a=="or" || *a=="nand" || *a=="nor" || *a=="xor" || *a=="xnor" || *a=="*"
+                       || *a=="=" ||*a=="/=" ||*a=="<" ||*a=="<=" ||*a==">" ||*a==">="||*a=="'")
             {
                 a++; // on est sur c
                 

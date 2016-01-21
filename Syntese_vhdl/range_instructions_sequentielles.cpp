@@ -26,8 +26,10 @@ list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i
     tree<string>::iterator i_affectation;
     tree<string>::iterator i_range_instructions_sequentielles;
     tree<string>::iterator i_affectation_conditionnelle;
-    b=a;
+    a=i;
+    b=i;
     b++;
+    cout<<"b vaut : "<<*b;
     if(*b=="(")
     {
         i_liste_sensi=tr.append_child(i_process,"liste_de_sensibilité");
@@ -102,6 +104,7 @@ list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i
          if(*b=="if")
          {
              i_affectation_conditionnelle=tr.append_child(i_range_instructions_sequentielles,"affectation_conditionnelle");
+             b=range_affectation_seq_cond(b,tr,i_affectation_conditionnelle);
          }
          else if(*b=="case")
          {

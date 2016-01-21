@@ -36,6 +36,7 @@ list<string>::iterator detection_parenthese(list<string>::iterator i,tree<string
 list<string>::iterator range_source_A(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_source);
 list<string>::iterator detection_parenthese_envers(list<string>::iterator i,tree<string>& tr);
 list<string>::iterator range_source_B(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_source);
+list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_affectation_conditionnelle);
 
 
 
