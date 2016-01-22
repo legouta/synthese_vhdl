@@ -22,8 +22,10 @@ list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<
     tree<string>::iterator i_source;
     tree<string>::iterator i_operator;
     tree<string>::iterator i_source_de_la_condition;
-    
-    
+    tree<string>::iterator i_elsif;
+    tree<string>::iterator i_affectation_conditionnelle_bis;
+    tree<string>::iterator i_affectation;
+
     i_source_de_la_condition=tr.append_child(i_affectation_conditionnelle,"source_de_la_condition");
     a=i;
     a++;
@@ -44,17 +46,17 @@ list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<
                    || *a=="xnor" || *a=="*" || *a=="=" ||*a=="/=" ||*a=="<" ||*a=="<=" ||*a==">" ||*a==">=" || *a=="'")
         {
             a--;
-            cout<< "ski----"<<*a<<endl;
+            //cout<< "ski----"<<*a<<endl;
             if(c==0)
             { 
-                i_source=tr.append_child(i_source_de_la_condition,"sources");
-                range_source_A(a,tr,i_source);
+             //   i_source=tr.append_child(i_source_de_la_condition,"sources");
+                range_source_A(a,tr,i_source_de_la_condition);
             }
             a++;
-            i_operator=tr.append_child(i_source,*a);
+            i_operator=tr.append_child(i_source_de_la_condition,*a);
             a++;
             c=1;
-            a=range_source_B(a,tr,i_source);
+            a=range_source_B(a,tr,i_source_de_la_condition);
         }
         if(*a=="then" && e==1 && c==0)
         {
@@ -70,6 +72,43 @@ list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<
         
     a++;
     }
+    cout<<"en sortie du rangement de condition on a : "<<*a<<endl;
+    
+   
+    a++;
+    b=a;
+    b++;
+    cout<<"avant le rangement des affectations conditionnelles on a : "<<*a<<" et b : "<<*b<<endl;
+
+    while(*a!="end" && *b!="if")
+    {
+        if(*a=="if")
+        {
+            i_affectation_conditionnelle_bis=tr.append_child(i_affectation_conditionnelle,"affectation_conditionnelle");
+            a=range_affectation_seq_cond(a,tr,i_affectation_conditionnelle_bis);
+        }
+        
+        if(*a=="elsif")
+        {
+           i_elsif=tr.append_child(i_affectation_conditionnelle,"elsif");
+           a=range_affectation_seq_cond(a,tr,i_elsif); 
+           a--;
+           a--;
+           a--; //car 1 seul endif, meme si elsif
+        }
+        
+        if(*b==":="||*b=="<=")
+        {
+            i_affectation=tr.append_child(i_affectation_conditionnelle,"affectation");
+            a=range_affectation(a,tr,i_affectation);
+        }
+        
+        a++;
+        b=a;
+        b++;
+        cout<<*a<<" "<<*b<<endl;
+        
+    }
     //x=a;
     //x--;
     //x--;
@@ -80,8 +119,9 @@ list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<
         //i_source_a=tr.append_child(i_source,*x);
     //}
    
-     
-    
+    a++;
+    a++;
+    cout<<"on renvoie : "<<*a<<endl;
     return a;
    
     

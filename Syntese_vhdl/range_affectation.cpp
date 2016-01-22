@@ -87,7 +87,15 @@ list<string>::iterator range_affectation(list<string>::iterator i,tree<string>& 
         i_source=tr.append_child(i_affectation,"source");
         i_source_a=tr.append_child(i_source,*x);
     }
-   /* if(d==1 && (*x==":="))
+
+    return a;
+            
+}
+    
+    
+    
+    
+       /* if(d==1 && (*x==":="))
     {
         x++;
         i_source=tr.append_child(i_affectation,"source");
@@ -134,9 +142,3 @@ list<string>::iterator range_affectation(list<string>::iterator i,tree<string>& 
     }
     */ 
     
-    return a;
-        
-    
-        
-           
-}
