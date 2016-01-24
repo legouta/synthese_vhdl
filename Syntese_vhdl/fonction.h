@@ -20,6 +20,8 @@ void test_fct_lexem(string nom_fichier_lexem_endl);
 void fct_suppr_double_endl(string nom_fichier_lexem_endl);
 tree<string> range_arbre(list<string> list_lexem);
 list<string> fct_liste_lexeme(string nom_fichier_clean);
+int test_syntaxe(list<string> a);
+
 list<string>::iterator range_library(list<string>::iterator, tree<string>&, tree<string>::iterator);
 list<string>::iterator range_use(list<string>::iterator, tree<string>&, tree<string>::iterator);
 list<string>::iterator range_entity(list<string>::iterator, tree<string>&, tree<string>::iterator);

@@ -30,6 +30,7 @@ list<string> a;
 list<string>::const_iterator i=a.begin();
 tree<string>::iterator loc;
 tree<string> tr;
+int erreur=0;
 
 
 //cout << fct_Maj_To_Min("/.automount/nfs5176/exports/users1/phelma2014/legouta/Bureau/test.txt");
@@ -37,11 +38,15 @@ fct_write_file(fct_Maj_To_Min(chemin_1));
 fct_lexem_endl(chemin_2);
 fct_suppr_double_endl(chemin_3);
 a=fct_liste_lexeme(chemin_4);
+erreur=test_syntaxe(a);
 //for(i=a.begin();i!=a.end();i++)
 //{cout<<*i<<endl;}
-tr=range_arbre(a);
-print_tree(tr,tr.begin(),tr.end());
-  return 0;
+if(erreur==0)
+{
+    tr=range_arbre(a);
+    print_tree(tr,tr.begin(),tr.end());
+}
+return 0;
 }
 
 
