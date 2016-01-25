@@ -14,7 +14,7 @@ using namespace std;
 int  principal_antoine();
 int  principal_damien();
 string fct_Maj_To_Min(string path_fichier);
-void fct_write_file(string code_en_min);
+void fct_write_file(string chaine_de_carac, string path);
 void fct_lexem_endl(string nom_fichier_en_min);
 void test_fct_lexem(string nom_fichier_lexem_endl);
 void fct_suppr_double_endl(string nom_fichier_lexem_endl);

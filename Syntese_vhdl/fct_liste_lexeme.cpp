@@ -108,12 +108,12 @@ list<string> fct_liste_lexeme(string nom_fichier_clean)
             }
           a++;       
          }
-     a=liste_lexem.begin();
+     /*a=liste_lexem.begin();
      while(a!=liste_lexem.end())
      {
          cout<<*a<<endl;
          a++;
-     }
+     }*/
      
      return liste_lexem;
 }

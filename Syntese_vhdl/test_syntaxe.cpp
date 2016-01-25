@@ -50,7 +50,7 @@ int test_syntaxe(list<string> a)
         }
         
         if((*i=="end"||*i=="if"||*i=="library"||*i=="use"||*i=="entity"||*i=="architecture"||
-            *i=="of"||*i=="signal"||*i=="variable"||*i=="else"||*i=="then") && affectation==true)
+            *i=="of"||*i=="signal"||*i=="variable"||*i=="else"||*i=="then" ||*i=="end"||*i=="process") && affectation==true)
         {
             erreur=1;
             cout<<"##erreur : plusieurs affectation manque point virgule !!! "<<*i<<endl;

@@ -7,12 +7,11 @@
 using namespace std;
 
 
-void fct_write_file(string code_en_min)
+void fct_write_file(string chaine_de_carac, string path)
 {
-string nom_fichier_en_min = "/home/damien/Workspace/synthese_vhdl/fichier_test/fichier_en_min.txt";
- 
+
 // Creation du fichier ou écrasement
-ofstream fichier(nom_fichier_en_min.c_str(), ios::trunc);
+ofstream fichier(path.c_str(), ios::trunc);
  
 /* --- Cas d'erreur d'ouverture du fichier --- */
 if ( !fichier ){
@@ -20,7 +19,7 @@ cerr << "Erreur de creation du fichier" << endl;
 exit(1);
 }
  
-fichier << code_en_min << endl;
+fichier << chaine_de_carac << endl;
  
 fichier.close();
 
