@@ -24,6 +24,8 @@ void synthese(tree<string> tr, string path_synthese, string path_signaux_interm)
     a_ecrire.clear();
     string tempo;
     string tempo2;
+    string    chemin_5 = "/home/damien/Workspace/synthese_vhdl/fichier_test/arbre.txt";
+
     while(it!=tr.end())
     {
         if(*it=="library")
@@ -189,6 +191,8 @@ void synthese(tree<string> tr, string path_synthese, string path_signaux_interm)
             recopie_fichier(path_synthese,path_signaux_interm);
     }
         
-        it++;       
-    }   
+        it++; 
+    }  
+
+    
 }    

@@ -15,7 +15,6 @@
 #include "tree.hh"
 using namespace std;
 
-void print_tree(const tree<string>& tr, tree<string>::pre_order_iterator it, tree<string>::pre_order_iterator end, string chemin_5);
 
 /*
  * 
@@ -34,14 +33,14 @@ string    chemin_7 = "/home/damien/Workspace/synthese_vhdl/fichier_test/signaux_
 list<string> a;
 list<string>::const_iterator i=a.begin();
 tree<string>::iterator loc;
-tree<string> tr;
+tree<string> tr,tr2;
 int erreur=0;
 
 
 //cout << fct_Maj_To_Min("/.automount/nfs5176/exports/users1/phelma2014/legouta/Bureau/test.txt");
 fct_write_file(fct_Maj_To_Min(chemin_1),chemin_2); 
-fct_lexem_endl(chemin_2);
-fct_suppr_double_endl(chemin_3);
+fct_lexem_endl(chemin_2,chemin_3);
+fct_suppr_double_endl(chemin_3,chemin_4);
 a=fct_liste_lexeme(chemin_4);
 erreur=test_syntaxe(a);
 for(i=a.begin();i!=a.end();i++)
@@ -51,36 +50,16 @@ for(i=a.begin();i!=a.end();i++)
 if(erreur==0)
 {
     tr=range_arbre(a);
-    print_tree(tr,tr.begin(),tr.end(), chemin_5);
+    //tr2=tr;
+    //print_tree(tr2,tr2.begin(),tr2.end(), chemin_5);
+    check_assignation(tr);
     synthese(tr,chemin_6,chemin_7);
+
+
+
+    
 }
 return 0;
 }
 
 
-void print_tree(const tree<string>& tr, tree<string>::pre_order_iterator it, tree<string>::pre_order_iterator end, string chemin_5)
-{
-    stringstream tempo;
-    
-    tempo.clear();
-	if(!tr.is_valid(it)) return;
-	int rootdepth=tr.depth(it);
-        tempo.clear();
-	tempo << "-----" << endl<<"   ";
-        fct_write_file(tempo.str(),chemin_5);
-	while(it!=end) {
-            tempo.clear();
-		for(int i=0; i<tr.depth(it)-rootdepth; ++i) 
-                {
-                    tempo << "~ "; 
-                }
-            tempo<<(*it) << endl << "   "<< flush;
-                    fct_write_file(tempo.str(),chemin_5);
-                                        
-		++it;
-		}
-        tempo.clear();
-	tempo << "-----" << endl;
-        fct_write_file(tempo.str(),chemin_5);
-        tempo.clear();
-}

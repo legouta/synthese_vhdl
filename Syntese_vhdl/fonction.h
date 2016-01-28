@@ -16,9 +16,9 @@ int  principal_damien();
 string fct_Maj_To_Min(string path_fichier);
 void fct_write_file(string chaine_de_carac, string path);
 void fct_append_file(string chaine_de_carac, string path);
-void fct_lexem_endl(string nom_fichier_en_min);
+void fct_lexem_endl(string nom_fichier_en_min,string path_cible);
 void test_fct_lexem(string nom_fichier_lexem_endl);
-void fct_suppr_double_endl(string nom_fichier_lexem_endl);
+void fct_suppr_double_endl(string nom_fichier_lexem_endl,string path_cible);
 tree<string> range_arbre(list<string> list_lexem);
 list<string> fct_liste_lexeme(string nom_fichier_clean);
 int test_syntaxe(list<string> a);
@@ -44,6 +44,9 @@ list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<
 
 void synthese(tree<string> tr, string path_synthese, string path_signaux_interm );
 void recopie_fichier(string path_cible, string path_source);
+list<string>::iterator check_assignation(tree<string> tr);
+
+void print_tree(const tree<string>& tr, tree<string>::pre_order_iterator it, tree<string>::pre_order_iterator end, string chemin_5);
 
 
 #endif	/* FONCTION_H */

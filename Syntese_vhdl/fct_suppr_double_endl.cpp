@@ -13,7 +13,7 @@
 using namespace std;
 
 
-void fct_suppr_double_endl(string nom_fichier_lexem_endl)
+void fct_suppr_double_endl(string nom_fichier_lexem_endl,string path_cible)
 {
     char carac;
     char carac_preced;
@@ -27,7 +27,7 @@ void fct_suppr_double_endl(string nom_fichier_lexem_endl)
     if(fichier_lexem_endl)  // si l'ouverture a réussi
 
         {  
-            string nom_fichier_clean = "/home/damien/Workspace/synthese_vhdl/fichier_test/fichier_clean.txt";
+            string nom_fichier_clean = path_cible;
  
             // Creation du fichier ou écrasement
             ofstream fichier_clean(nom_fichier_clean.c_str(), ios::trunc);

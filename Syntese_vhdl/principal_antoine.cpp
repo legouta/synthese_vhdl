@@ -27,8 +27,8 @@ string    chemin_3 = "/home/damien/Workspace/synthese_vhdl/fichier_test/lexem_en
 //cout << fct_Maj_To_Min("/.automount/nfs5176/exports/users1/phelma2014/legouta/Bureau/test.txt");
 fct_write_file(fct_Maj_To_Min(chemin_1),chemin_2); 
 
-fct_lexem_endl(chemin_2);
-test_fct_lexem(chemin_3);
+fct_lexem_endl(chemin_2,chemin_3);
+//test_fct_lexem(chemin_3,chemin_4);
   return 0;
 }
 
