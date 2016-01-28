@@ -26,7 +26,7 @@ tree<string> range_arbre(list<string> list_lexem)
     i_lib=tr.insert(root,"library");
     i_use=tr.insert(root,"use");
     i_entity=tr.insert(root,"entity");
-    i_archi=tr.insert(root,"archi");
+    i_archi=tr.insert(root,"architecture");
     
     
     for(i=list_lexem.begin();i!=(list_lexem.end());i++)

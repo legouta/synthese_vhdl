@@ -11,7 +11,7 @@ void fct_write_file(string chaine_de_carac, string path)
 {
 
 // Creation du fichier ou écrasement
-ofstream fichier(path.c_str(), ios::trunc);
+ofstream fichier(path.c_str(), ios::trunc); //ios::out | ios::trunc
  
 /* --- Cas d'erreur d'ouverture du fichier --- */
 if ( !fichier ){

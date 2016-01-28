@@ -13,8 +13,8 @@
 #include <sstream>
 #include "fonction.h"
 #include "tree.hh"
-
 using namespace std;
+
 void print_tree(const tree<string>& tr, tree<string>::pre_order_iterator it, tree<string>::pre_order_iterator end, string chemin_5);
 
 /*
@@ -28,7 +28,8 @@ string    chemin_2 = "/home/damien/Workspace/synthese_vhdl/fichier_test/fichier_
 string    chemin_3 = "/home/damien/Workspace/synthese_vhdl/fichier_test/lexem_endl.txt";
 string    chemin_4 = "/home/damien/Workspace/synthese_vhdl/fichier_test/fichier_clean.txt";
 string    chemin_5 = "/home/damien/Workspace/synthese_vhdl/fichier_test/arbre.txt";
-
+string    chemin_6 = "/home/damien/Workspace/synthese_vhdl/fichier_test/synthese.txt";
+string    chemin_7 = "/home/damien/Workspace/synthese_vhdl/fichier_test/signaux_interm.txt";
 
 list<string> a;
 list<string>::const_iterator i=a.begin();
@@ -51,6 +52,7 @@ if(erreur==0)
 {
     tr=range_arbre(a);
     print_tree(tr,tr.begin(),tr.end(), chemin_5);
+    synthese(tr,chemin_6,chemin_7);
 }
 return 0;
 }

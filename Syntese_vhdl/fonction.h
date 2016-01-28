@@ -15,6 +15,7 @@ int  principal_antoine();
 int  principal_damien();
 string fct_Maj_To_Min(string path_fichier);
 void fct_write_file(string chaine_de_carac, string path);
+void fct_append_file(string chaine_de_carac, string path);
 void fct_lexem_endl(string nom_fichier_en_min);
 void test_fct_lexem(string nom_fichier_lexem_endl);
 void fct_suppr_double_endl(string nom_fichier_lexem_endl);
@@ -40,6 +41,9 @@ list<string>::iterator detection_parenthese_envers(list<string>::iterator i,tree
 list<string>::iterator range_source_B(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_source);
 list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_affectation_conditionnelle);
 
+
+void synthese(tree<string> tr, string path_synthese, string path_signaux_interm );
+void recopie_fichier(string path_cible, string path_source);
 
 
 #endif	/* FONCTION_H */
