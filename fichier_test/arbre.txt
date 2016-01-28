@@ -1,0 +1,149 @@
+-----
+   library
+   ~ ieee
+   use
+   ~ ieee
+   ~ ~ std_logic_1164
+   ~ ~ all
+   ~ ieee
+   ~ ~ std_logic_arith
+   ~ ~ all
+   ~ ieee
+   ~ ~ std_logic_unsigned
+   ~ ~ all
+   entity
+   ~ compteur
+   ~ ~ clk
+   ~ ~ ~ in
+   ~ ~ ~ ~ std_logic
+   ~ ~ raz
+   ~ ~ ~ in
+   ~ ~ ~ ~ std_logic
+   ~ ~ qs
+   ~ ~ ~ out
+   ~ ~ ~ ~ std_logic_vector
+   ~ ~ ~ ~ ~ 3
+   ~ ~ ~ ~ ~ downto
+   ~ ~ ~ ~ ~ 0
+   archi
+   ~ acmpt
+   ~ ~ compteur
+   ~ ~ declaration
+   ~ ~ ~ signal
+   ~ ~ ~ ~ q
+   ~ ~ ~ ~ ~ std_logic_vector
+   ~ ~ ~ ~ ~ ~ 3
+   ~ ~ ~ ~ ~ ~ downto
+   ~ ~ ~ ~ ~ ~ 0
+   ~ ~ instructions_concurentes
+   ~ ~ ~ affectation
+   ~ ~ ~ ~ qs
+   ~ ~ ~ ~ <=
+   ~ ~ ~ ~ source
+   ~ ~ ~ ~ ~ q
+   ~ ~ ~ affectation
+   ~ ~ ~ ~ q
+   ~ ~ ~ ~ <=
+   ~ ~ ~ ~ sources
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ b
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ a
+   ~ ~ ~ ~ ~ *
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ c
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ d
+   ~ ~ ~ ~ ~ *
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ e
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ f
+   ~ ~ ~ affectation
+   ~ ~ ~ ~ q
+   ~ ~ ~ ~ <=
+   ~ ~ ~ ~ sources
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ h
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ g
+   ~ ~ ~ ~ ~ *
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ i
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ j
+   ~ ~ ~ ~ ~ *
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ k
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ l
+   ~ ~ ~ affectation
+   ~ ~ ~ ~ q
+   ~ ~ ~ ~ <=
+   ~ ~ ~ ~ sources
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ b
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ a
+   ~ ~ ~ ~ ~ *
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ c
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ d
+   ~ ~ ~ ~ ~ *
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ e
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ f
+   ~ ~ ~ affectation
+   ~ ~ ~ ~ q
+   ~ ~ ~ ~ <=
+   ~ ~ ~ ~ sources
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ n
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ m
+   ~ ~ ~ ~ ~ *
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ o
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ p
+   ~ ~ ~ ~ ~ *
+   ~ ~ ~ ~ ~ sources_bis
+   ~ ~ ~ ~ ~ ~ q
+   ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ r
+   ~ ~ ~ affectation
+   ~ ~ ~ ~ qs
+   ~ ~ ~ ~ <=
+   ~ ~ ~ ~ source
+   ~ ~ ~ ~ ~ q
+   ~ ~ process
+   ~ ~ ~ liste_de_sensibilité
+   ~ ~ ~ ~ clk
+   ~ ~ ~ instructions_sequentielles
+   ~ ~ ~ ~ affectation_conditionnelle
+   ~ ~ ~ ~ ~ source_de_la_condition
+   ~ ~ ~ ~ ~ ~ clk
+   ~ ~ ~ ~ ~ ~ '
+   ~ ~ ~ ~ ~ ~ event
+   ~ ~ ~ ~ ~ ~ and
+   ~ ~ ~ ~ ~ ~ clk
+   ~ ~ ~ ~ ~ ~ =
+   ~ ~ ~ ~ ~ ~ '1'
+   ~ ~ ~ ~ ~ affectation_conditionnelle
+   ~ ~ ~ ~ ~ ~ source_de_la_condition
+   ~ ~ ~ ~ ~ ~ ~ raz
+   ~ ~ ~ ~ ~ ~ ~ =
+   ~ ~ ~ ~ ~ ~ ~ '1'
+   ~ ~ ~ ~ ~ ~ affectation
+   ~ ~ ~ ~ ~ ~ ~ q
+   ~ ~ ~ ~ ~ ~ ~ <=
+   ~ ~ ~ ~ ~ ~ affectation
+   ~ ~ ~ ~ ~ ~ ~ q
+   ~ ~ ~ ~ ~ ~ ~ <=
+   ~ ~ ~ ~ ~ ~ ~ sources
+   ~ ~ ~ ~ ~ ~ ~ ~ q
+   ~ ~ ~ ~ ~ ~ ~ ~ +
+   ~ ~ ~ ~ ~ ~ ~ ~ 1
+   
