@@ -45,7 +45,7 @@ list<string>::iterator range_variable(list<string>::iterator i,tree<string>& tr,
                 else
                 {
                     i_complement=tr.append_child(i_type_variable,*a);
-                    cout<<"complement : "<<*a<<endl;               
+                   // cout<<"complement : "<<*a<<endl;               
                 }
             }
     }

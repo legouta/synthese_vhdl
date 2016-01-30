@@ -20,8 +20,6 @@ list<string>::iterator range_entity(list<string>::iterator i,tree<string>& tr, t
     string entity;
     string str_nom_port;
     list<string>::iterator a;
-    list<string>::iterator x;
-    list<string>::iterator y;
     i++;
     
     nom_entity=tr.append_child(i_entity,*i);
@@ -37,19 +35,19 @@ list<string>::iterator range_entity(list<string>::iterator i,tree<string>& tr, t
                 while(1)
                 {
                     i++;
-                    cout<<"nom du port : "<<*i<<endl;
+                    //cout<<"nom du port : "<<*i<<endl;
                     i_ports=tr.append_child(nom_entity,*i);
                     str_nom_port=*i;
                     i++;
-                    cout<<"apres le port il y a : "<<*i<<endl;
+                    //cout<<"apres le port il y a : "<<*i<<endl;
                     if(*i==":")
                     {
-                        cout<<"entre dans port( signal:"<<endl;
+                        //cout<<"entre dans port( signal:"<<endl;
                         i--;
-                        cout<<*i<<endl;
+                        //cout<<*i<<endl;
                         i++;
                         i=range_port( i,tr,i_ports,str_nom_port);
-                        cout<<"a la sortie de range_port il y a : "<<*i<<endl;
+                        //cout<<"a la sortie de range_port il y a : "<<*i<<endl;
                         
                     }
                     else if (*i==",")
@@ -62,20 +60,12 @@ list<string>::iterator range_entity(list<string>::iterator i,tree<string>& tr, t
                         range_port(a,tr,i_ports,str_nom_port);
                     }
                     
-                    //cout<<*i<<*(i++)<<endl;
-                    x=i;
-                    cout<<*i;
-                    x++;
-                    y=x;
-                    cout<<*x;
-                    y++;
-                    cout<<*y<<endl;
                     if(*i==")") 
                     {
                         i++;
                         if(*(i)==";")
                         {
-                            cout<<"on sort"<<endl<<*i<<endl;
+                            //cout<<"on sort"<<endl<<*i<<endl;
 
                             return i++;
                         }

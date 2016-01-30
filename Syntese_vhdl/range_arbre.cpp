@@ -50,7 +50,7 @@ tree<string> range_arbre(list<string> list_lexem)
         
         if (lexem=="architecture")
         {
-            i=range_archi(i,tr,i_archi);
+            i=range_archi(i,tr,i_archi,list_lexem);
         }
         
        

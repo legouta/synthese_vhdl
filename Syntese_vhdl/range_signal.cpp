@@ -45,7 +45,7 @@ list<string>::iterator range_signal(list<string>::iterator i,tree<string>& tr, t
                 else
                 {
                     i_complement=tr.append_child(i_type_signal,*a);
-                    cout<<"complement : "<<*a<<endl;               
+                    //cout<<"complement : "<<*a<<endl;               
                 }
             }
     }

@@ -14,9 +14,9 @@ list<string>::iterator check_assignation(tree<string> tr)
     tree<string>::iterator x1;
     tree<string>::iterator loc;
     x1=tr.begin();
-    cout << "test debut arbre " << *x1 << " ici" <<endl;
+    //cout << "test debut arbre " << *x1 << " ici" <<endl;
 
-    cout << *tr.end();
+    //cout << *tr.end();
     int rootdepth=tr.depth(x1);
     int signaldepth;
 
@@ -34,7 +34,7 @@ list<string>::iterator check_assignation(tree<string> tr)
                 loc++;
             }
 
-            cout <<*x1 <<" "<<*loc <<" "<< signaldepth;
+            //cout <<*x1 <<" "<<*loc <<" "<< signaldepth;
             x1++;
 
         }

@@ -21,12 +21,12 @@ list<string>::iterator detection_parenthese(list<string>::iterator i,tree<string
     list<string>::iterator a;
     
     a=i;
-    cout << " en compte ou pas dans parenthese ? : " << *a<<endl;
+    //cout << " en compte ou pas dans parenthese ? : " << *a<<endl;
 
     a++;
-    cout << " en compte ou pas bis dans parentehse? : " << *a<<endl;
+   // cout << " en compte ou pas bis dans parentehse? : " << *a<<endl;
 
-    cout <<"dans parenthese : ";
+    //cout <<"dans parenthese : ";
     while(*a!=")")
     {
         
@@ -38,6 +38,6 @@ list<string>::iterator detection_parenthese(list<string>::iterator i,tree<string
         a++;
         
     }
-       cout <<endl; 
+      // cout <<endl; 
     return a;
 }

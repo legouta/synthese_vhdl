@@ -24,15 +24,15 @@ list<string>::iterator range_port(list<string>::iterator i,tree<string>& tr, tre
     if(*a=="in" || *a=="out")
     {
         i_sens_port=tr.append_child(i_ports,*a);
-        cout<<"sens du port :"<<*a<<endl;
+        //cout<<"sens du port :"<<*a<<endl;
         a++;
         i_type_port=tr.append_child(i_sens_port,*a);
-        cout<<"type du port :"<<*a<<endl;
+        //cout<<"type du port :"<<*a<<endl;
         a++;
-        cout<<"a vaut :"<<*a<<endl;
+        //cout<<"a vaut :"<<*a<<endl;
         if(*a==";" || *a==")")
         {
-            cout<<"on sort de range port"<<endl;
+            //cout<<"on sort de range port"<<endl;
             return a;
         }
         else if(*a=="(")
@@ -48,7 +48,8 @@ list<string>::iterator range_port(list<string>::iterator i,tree<string>& tr, tre
                 else
                 {
                     i_complement=tr.append_child(i_type_port,*a);
-                    cout<<"complement : "<<*a<<endl;                }
+                    //cout<<"complement : "<<*a<<endl;                
+                }
             }
         }
     }

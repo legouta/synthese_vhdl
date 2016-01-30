@@ -9,7 +9,7 @@
 using namespace std;
 
 
-list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_archi)
+list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_archi, list<string> liste)
 {
     
     string lexem;
@@ -55,12 +55,18 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                         if(*i=="signal" )
                         {
                             j=i;
-                            j++;
+                            if(i!=liste.end())
+                            {
+                                j++;
+                            }
                             while(*i=="signal")
                             {
                                 i++;
                                 j=i;
-                                j++;
+                                if(i!=liste.end())
+                                {
+                                    j++;
+                                }
                                 if(*j==":")
                                 {
                                     i_nom_signal=tr.append_child(i_type_declaration,*i);                                
@@ -78,7 +84,7 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                                 }
                                 else if (*j==",")
                                 {                                    
-                                    i=range_multi_signaux(i,tr,i_nom_signal,i_type_declaration); //retourne le point virgule de la ligne sur laquelle il est
+                                    i=range_multi_signaux(i,tr,i_nom_signal,i_type_declaration, liste); //retourne le point virgule de la ligne sur laquelle il est
                                     i++;
                                 }
                             } 
@@ -87,13 +93,16 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                         
                     }
             //cout <<"ici range archi"<<*i<< endl;
-            cout << *i<< endl;
+            //cout << *i<< endl;
             
                     if(*i=="begin")
                     {
                         i++;
                         j=i;
-                        j++;
+                        if(i!=liste.end())
+                        {
+                            j++;
+                        }
                         //cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j <<endl;
                         //cout<<"ici debut begin"<<endl;
                         
@@ -108,19 +117,22 @@ list<string>::iterator range_archi(list<string>::iterator i,tree<string>& tr, tr
                                 {                                
                                     i_range_instructions_concurentes=tr.append_child(i_nom_archi,"instructions_concurentes");
                                 }                                
-                                    i=range_instructions_concurentes(i,tr,i_range_instructions_concurentes,*i_nom_archi);                                
+                                    i=range_instructions_concurentes(i,tr,i_range_instructions_concurentes,*i_nom_archi,liste);                                
                             }
                             else
                             {
                                // cout<< " vue process i vaut : "<< *i << endl;
                                 i_process=tr.append_child(i_nom_archi,"process");
-                                i=range_instrcutions_sequentielles(i,tr,i_process);
+                                i=range_instrcutions_sequentielles(i,tr,i_process,liste);
                                 
                             }
                          //i++;
                          j=i;
-                         j++;
-                         cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j <<endl;
+                         if(i!=liste.end())
+                         {
+                             j++;
+                         }
+                        // cout<<"i vaut: " << *i << endl <<"j vaut: "<<*j <<endl;
                         }
                        
                         //*/

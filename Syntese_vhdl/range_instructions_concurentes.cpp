@@ -15,7 +15,7 @@
 using namespace std;
 
 
-list<string>::iterator range_instructions_concurentes(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_range_instructions_concurentes, string nom_archi)
+list<string>::iterator range_instructions_concurentes(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_range_instructions_concurentes, string nom_archi, list<string> liste)
 {
     string lexem;
     lexem=*i;
@@ -29,7 +29,11 @@ list<string>::iterator range_instructions_concurentes(list<string>::iterator i,t
 
     a=i;
     b=i;
-    b++;
+    if(a!=liste.end())
+    {
+        b++;
+    }
+ 
         
     while (*a!="end" && *b!=nom_archi )
             {
@@ -59,7 +63,10 @@ list<string>::iterator range_instructions_concurentes(list<string>::iterator i,t
                 }
                 a++;
                 b=a;
-                b++;
+                if(a!=liste.end())
+                {
+                    b++;
+                }   
             }
     if(c==0 && d==1 && e==0) 
     {   

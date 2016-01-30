@@ -15,7 +15,7 @@
 using namespace std;
 
 
-list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_process)
+list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_process, list<string> liste)
 {
     list<string>::iterator a,b,c;
     tree<string>::iterator i_liste_sensi;
@@ -28,8 +28,11 @@ list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i
     tree<string>::iterator i_affectation_conditionnelle;
     a=i;
     b=i;
-    b++;
-    cout<<"b vaut : "<<*b;
+    if(a!=liste.end())
+    {
+        b++;
+    }
+    //cout<<"b vaut : "<<*b;
     if(*b=="(")
     {
         i_liste_sensi=tr.append_child(i_process,"liste_de_sensibilité");
@@ -50,23 +53,29 @@ list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i
     }
    
      b++;
-     cout<<"on est avant begin du process, b vaut :"<<*b<<endl;
+    // cout<<"on est avant begin du process, b vaut :"<<*b<<endl;
         if(*b !="begin")
         {   
-            cout<<"on detecte begin du process"<<endl;
+           // cout<<"on detecte begin du process"<<endl;
             i_declaration=tr.append_child(i_process,"declaration");
             i_type_declaration=tr.append_child(i_declaration,*b);
-            cout << "apres declaration variable que vaut b ? :" << *b << endl;
+           // cout << "apres declaration variable que vaut b ? :" << *b << endl;
             if(*b=="variable" )
             {
-                cout<<"on detecte declaration de variable"<<endl;
+               // cout<<"on detecte declaration de variable"<<endl;
                 c=b;
-                c++;
+                if(b!=liste.end())
+                {
+                    c++;
+                }
                 while(*b=="variable")
                 {
                     b++;
                     c=b;
-                    c++;
+                    if(b!=liste.end())
+                    {
+                        c++;
+                    }
 
                     if(*c==":")
                     {
@@ -85,26 +94,29 @@ list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i
                     }
                     else if (*c==",")
                     {                                    
-                        b=range_multi_variables(b,tr,i_nom_variable,i_type_declaration); //retourne le point virgule de la ligne sur laquelle il est
+                        b=range_multi_variables(b,tr,i_nom_variable,i_type_declaration, liste); //retourne le point virgule de la ligne sur laquelle il est
                         b++;
                     }
                 } 
             }
         }
- cout<<"avant instructions séquentielles (apres rangement variables), b vaut : "<<*b<<endl;       
+ //cout<<"avant instructions séquentielles (apres rangement variables), b vaut : "<<*b<<endl;       
  if(*b=="begin")
  {
      i_range_instructions_sequentielles=tr.append_child(i_process,"instructions_sequentielles");
      b++;
      c=b;
-     c++;
+     if(b!=liste.end())
+     {
+        c++;
+     }
      while((*b!="end" && *c!="process")) 
     {
-         cout<<"dans while range instruc seq : "<<*b<<" "<<*c<<endl;
+         //cout<<"dans while range instruc seq : "<<*b<<" "<<*c<<endl;
          if(*b=="if")
          {
              i_affectation_conditionnelle=tr.append_child(i_range_instructions_sequentielles,"affectation_conditionnelle");
-             b=range_affectation_seq_cond(b,tr,i_affectation_conditionnelle);
+             b=range_affectation_seq_cond(b,tr,i_affectation_conditionnelle, liste);
          }
          else if(*b=="case")
          {
@@ -113,14 +125,17 @@ list<string>::iterator range_instrcutions_sequentielles(list<string>::iterator i
         // cout<<"b :"<<*b<<"c :"<<*c<<endl;
          else if(*c=="<=" || *c==":=")
          {
-            cout<<"on range des affectations séquentielles"<<endl;
+            //cout<<"on range des affectations séquentielles"<<endl;
             i_affectation=tr.append_child(i_range_instructions_sequentielles,"affectation");
             b=range_affectation(b,tr,i_affectation);
          }
          
         b++;
         c=b;
-        c++;
+        if(b!=liste.end())
+        {
+            c++;
+        }
     }
    // cout <<" dans range instr seq b vaut: "<<*b<<endl;
     c++; // b sur point virgule

@@ -14,7 +14,7 @@
 #include "tree.hh"
 using namespace std;
 
-list<string>::iterator range_multi_variables(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_nom_variable, tree<string>::iterator i_type_declaration)
+list<string>::iterator range_multi_variables(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_nom_variable, tree<string>::iterator i_type_declaration, list<string> liste)
 {
     string lexem;
     lexem=*i;
@@ -25,7 +25,10 @@ list<string>::iterator range_multi_variables(list<string>::iterator i,tree<strin
 
     a=i;
     j=i;
-    j++;
+    if(a!=liste.end())
+    {
+        j++;
+    }
     while(*j==","||*j==":")
     {
         i_nom_variable=tr.append_child(i_type_declaration,*i);

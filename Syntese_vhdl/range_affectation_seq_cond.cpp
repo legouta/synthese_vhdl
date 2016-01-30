@@ -14,9 +14,9 @@
 #include "tree.hh"
 using namespace std;
 
-list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_affectation_conditionnelle)
+list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_affectation_conditionnelle, list<string> liste)
 {   
-    cout<<"on range une affectation conditionnelle"<<endl;
+    //cout<<"on range une affectation conditionnelle"<<endl;
     list<string>::iterator a,b,d;
     int e=0,c=0 ;
     tree<string>::iterator i_source;
@@ -24,7 +24,7 @@ list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<
     tree<string>::iterator i_source_de_la_condition;
     tree<string>::iterator i_elsif;
     tree<string>::iterator i_affectation_conditionnelle_bis;
-    tree<string>::iterator i_affectation;
+    tree<string>::iterator i_affectation, i_else;
 
     i_source_de_la_condition=tr.append_child(i_affectation_conditionnelle,"source_de_la_condition");
     a=i;
@@ -72,26 +72,26 @@ list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<
         
     a++;
     }
-    cout<<"en sortie du rangement de condition on a : "<<*a<<endl;
+    //cout<<"en sortie du rangement de condition on a : "<<*a<<endl;
     
    
     a++;
     b=a;
     b++;
-    cout<<"avant le rangement des affectations conditionnelles on a : "<<*a<<" et b : "<<*b<<endl;
+    //cout<<"avant le rangement des affectations conditionnelles on a : "<<*a<<" et b : "<<*b<<endl;
 
     while(*a!="end" && *b!="if")
     {
         if(*a=="if")
         {
             i_affectation_conditionnelle_bis=tr.append_child(i_affectation_conditionnelle,"affectation_conditionnelle");
-            a=range_affectation_seq_cond(a,tr,i_affectation_conditionnelle_bis);
+            a=range_affectation_seq_cond(a,tr,i_affectation_conditionnelle_bis, liste);
         }
         
         if(*a=="elsif")
         {
            i_elsif=tr.append_child(i_affectation_conditionnelle,"elsif");
-           a=range_affectation_seq_cond(a,tr,i_elsif); 
+           a=range_affectation_seq_cond(a,tr,i_elsif, liste); 
            a--;
            a--;
            a--; //car 1 seul endif, meme si elsif
@@ -103,10 +103,21 @@ list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<
             a=range_affectation(a,tr,i_affectation);
         }
         
+        if(*a=="else")
+        {
+          //  i_else=tr.append_child(i_affectation_conditionnelle,"else");
+          //  a=while_conditionnel(a,tr,i_else, liste);
+           //a--;
+        }
         a++;
         b=a;
-        b++;
-        cout<<*a<<" "<<*b<<endl;
+        if(a!=liste.end())
+        {
+            b++;
+        }
+        
+        
+        //cout<<*a<<" "<<*b<<endl;
         
     }
     //x=a;
@@ -121,7 +132,7 @@ list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<
    
     a++;
     a++;
-    cout<<"on renvoie : "<<*a<<endl;
+    //cout<<"on renvoie : "<<*a<<endl;
     return a;
    
     

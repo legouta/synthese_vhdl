@@ -29,7 +29,7 @@ void recopie_fichier(string path_cible, string path_source)
             {
                 a.clear();                
                 a=caractere;
-                cout<<a;
+                //cout<<a;
                 fct_append_file(a,path_cible);
             }
         }
