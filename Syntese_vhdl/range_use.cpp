@@ -9,7 +9,7 @@
 using namespace std;
 
 
-list<string>::iterator range_use(list<string>::iterator i,tree<string>& tr, tree<string>::iterator i_use)
+list<string>::iterator range_use(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_use)
 {
     
     string lexem;
