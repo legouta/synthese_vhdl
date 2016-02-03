@@ -20,6 +20,7 @@ void synt_affec(tree<string> &tr, tree<string>::iterator it, string path_synthes
 	dest=*it;
 	it++;
 	it++;
+        it++;
 	while(tr.depth(it)-rootdepth>=1)
 	{
 		if(tr.depth(it)-rootdepth==2)

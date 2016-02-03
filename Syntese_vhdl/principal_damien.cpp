@@ -45,13 +45,13 @@ a=fct_liste_lexeme(chemin_4);
 erreur=test_syntaxe(a);
 //for(i=a.begin();i!=a.end();i++)
 //{cout<<*i<<endl;}
-for(i=a.begin();i!=a.end();i++)
-{cout<<*i<<endl;}
+//for(i=a.begin();i!=a.end();i++)
+//{cout<<*i<<endl;}
 if(erreur==0)
 {
     tr=range_arbre(a);
     //tr2=tr;
-   //print_tree(tr2,tr2.begin(),tr2.end(), chemin_5);
+   print_tree(tr,tr.begin(),tr.end(), chemin_5);
     //check_assignation(tr);
     synthese(tr,chemin_6,chemin_7);
 
