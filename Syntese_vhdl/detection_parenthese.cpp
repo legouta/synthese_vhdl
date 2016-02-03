@@ -30,7 +30,7 @@ list<string>::iterator detection_parenthese(list<string>::iterator i,tree<string
     while(*a!=")")
     {
         
-        cout <<*a;
+        //cout <<*a;
         if(*a=="(")
         {
             a=detection_parenthese(a,tr);
