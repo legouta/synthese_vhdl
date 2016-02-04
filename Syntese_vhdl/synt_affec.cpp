@@ -10,27 +10,44 @@ using namespace std;
 
 void synt_affec(tree<string> &tr, tree<string>::iterator it, string path_synthese)
 {
-    int rootdepth=tr.depth(it);
+    int rootdepth=tr.depth(it); //au niveau de "affectation"
+    tree<string>::iterator a;
     stringstream a_ecrire;
     a_ecrire.clear();
     int nb_fils_affec=0;
     string dest;
     
-	it++;
-	dest=*it;
-	it++;
-	it++;
-        it++;
-	while(tr.depth(it)-rootdepth>=1)
+    a=it;
+    a++;
+    dest=*a;
+    a++;
+    a++;
+    a++;
+    while(tr.depth(a)-rootdepth>=1)
+    {
+        if(*a=="sources_bis")
 	{
-		if(tr.depth(it)-rootdepth==2)
-		{
-			nb_fils_affec++;
-		}
-
-		it++;
+            synth_source_bis(tr,a);
 	}
-cout<<"nb fils affec = "<<nb_fils_affec<<endl;
+        a++;
+    }
+    
+    a=it;
+    a++;
+    a++;
+    a++;
+    a++;
+  
+    while(tr.depth(a)-rootdepth>=1)
+    {
+        if(tr.depth(a)-rootdepth==2)
+	{
+            nb_fils_affec++;
+	}
+
+	a++;
+    }
+    cout<<"nb fils affec = "<<nb_fils_affec<<endl;
 
 
 }
