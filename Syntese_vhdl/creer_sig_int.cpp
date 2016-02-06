@@ -14,10 +14,23 @@
 #include "tree.hh"
 using namespace std;
 
-string creer_sig_int()
+string creer_sig_int(string path_signaux_interm)
 {
     stringstream sig_int;
+    int nb=0;
+    bool egal;
     
     
+    while(egal==true)
+    {
+        sig_int.clear();
+        sig_int<<"sig_int_"<<nb;
+        
+        //parcourt le tableau et met egal à true si le signal existe deja
+        
+        nb++;
+    }
+    fct_append_file(sig_int.str(),path_signaux_interm);
     
+    return sig_int.str();
 }

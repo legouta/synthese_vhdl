@@ -14,7 +14,7 @@
 #include "tree.hh"
 using namespace std;
 
-void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm)
+void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm)
 {
     
     tree<string>::iterator it;
@@ -22,14 +22,15 @@ void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm
     int rootdepth=tr.depth(it);
     stringstream a_ecrire;
     a_ecrire.clear();
+    list<string> portes_util;
     string tempo;
     string tempo2;
     string    chemin_5 = "/home/damien/Workspace/synthese_vhdl/fichier_test/arbre.txt";
 
     a_ecrire<<"library portes;"<<endl<<"use portes.cell.all;"<<endl;
     fct_write_file(a_ecrire.str(),path_synthese);
-
-
+    
+    portes_util.clear();
 
     while(it!=tr.end())
     {
@@ -193,15 +194,15 @@ void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm
                 }
         }
             
-            recopie_fichier(path_synthese,path_signaux_interm);
+
     }
         if(*it=="affectation")
         {
-            synt_affec(tr,it,path_synthese);
+            synt_affec(tr,it,path_synthese, path_signaux_interm, path_portes_interm, portes_util);
         }
         
         it++;
     }  
-
-    
+    recopie_fichier(path_synthese,path_signaux_interm);
+    recopie_fichier(path_synthese,path_portes_interm);
 }    

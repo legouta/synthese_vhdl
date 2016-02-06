@@ -29,6 +29,7 @@ string    chemin_4 = "/home/damien/Workspace/synthese_vhdl/fichier_test/fichier_
 string    chemin_5 = "/home/damien/Workspace/synthese_vhdl/fichier_test/arbre.txt";
 string    chemin_6 = "/home/damien/Workspace/synthese_vhdl/fichier_test/synthese.txt";
 string    chemin_7 = "/home/damien/Workspace/synthese_vhdl/fichier_test/signaux_interm.txt";
+string    chemin_8 = "/home/damien/Workspace/synthese_vhdl/fichier_test/portes_interm.txt";
 
 list<string> a;
 list<string>::const_iterator i=a.begin();
@@ -54,7 +55,7 @@ if(erreur==0)
     //tr2=tr;
    print_tree(tr,tr.begin(),tr.end(), chemin_5);
     //check_assignation(tr);
-    synthese(tr,chemin_6,chemin_7);
+    synthese(tr,chemin_6,chemin_7, chemin_8);
 
 
 
