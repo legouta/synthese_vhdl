@@ -33,6 +33,8 @@ string    chemin_8 = "/home/damien/Workspace/synthese_vhdl/fichier_test/portes_i
 
 list<string> a;
 list<string>::const_iterator i=a.begin();
+list<string> b;
+list<string>::const_iterator x=b.begin();
 tree<string>::iterator loc;
 tree<string> tr,tr2;
 int erreur=0;
@@ -45,17 +47,20 @@ fct_lexem_endl(chemin_2,chemin_3);
 fct_suppr_double_endl(chemin_3,chemin_4);
 a=fct_liste_lexeme(chemin_4);
 erreur=test_syntaxe(a);
-//for(i=a.begin();i!=a.end();i++)
-//{cout<<*i<<endl;}
-//for(i=a.begin();i!=a.end();i++)
-//{cout<<*i<<endl;}
+
+
 if(erreur==0)
 {
     tr=range_arbre(a);
+    b=creer_liste_nom(tr);
+    //print_tree(tr,tr.begin(),tr.end(), chemin_5);
+
+    for(x=b.begin();x!=b.end();x++)
+    {cout<<*x<<endl;}
     //tr2=tr;
-   print_tree(tr,tr.begin(),tr.end(), chemin_5);
+    //print_tree(tr,tr.begin(),tr.end(), chemin_5);
     //check_assignation(tr);
-    synthese(tr,chemin_6,chemin_7, chemin_8);
+    //synthese(tr,chemin_6,chemin_7, chemin_8);
 
 
 

@@ -41,9 +41,10 @@ list<string>::iterator detection_parenthese_envers(list<string>::iterator i,tree
 list<string>::iterator range_source_B(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_source);
 list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_affectation_conditionnelle, list<string> liste);
 list<string>::iterator while_conditionnel(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_else, list<string> liste);
+list<string> creer_liste_nom(tree<string> tr);
 
 
-void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm);
+//void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm);
 void recopie_fichier(string path_cible, string path_source);
 list<string>::iterator check_assignation(tree<string> &tr);
 void synt_affec(tree<string> &tr, tree<string>::iterator it, string path_synthese, string path_signaux_interm,string path_portes_interm, list<string> portes_util);
