@@ -54,22 +54,28 @@ void check(tree<string> tr,list<string> &liste_nom,list<string> &liste_sous_type
                 it++;
             }
             it++;
-            while(tr.depth(it)-rootdepth !=4)
+            it++;
+            it++;
+            if(*it=="declaration")
             {
-                it++ ; 
-            }
-            while(tr.depth(it)-rootdepth !=2)
-            {
-                if(tr.depth(it)==4)
+                while(tr.depth(it)-rootdepth !=4)
                 {
-                    nom_dans_tr<<*it;
-                    chaine_nom_dans_tr=nom_dans_tr.str();
-                    liste_nom.push_back(chaine_nom_dans_tr);
-                    chaine_nom_dans_tr.clear();
-                    nom_dans_tr.str("");
+                    it++ ; 
                 }
+                while(tr.depth(it)-rootdepth !=2)
+                {
+                    if(tr.depth(it)==4)
+                    {
+                        nom_dans_tr<<*it;
+                        chaine_nom_dans_tr=nom_dans_tr.str();
+                        liste_nom.push_back(chaine_nom_dans_tr);
+                        chaine_nom_dans_tr.clear();
+                        nom_dans_tr.str("");
+                    }
                 it++;
+                }
             }
+            
         }
         if(*it=="process")
         {
