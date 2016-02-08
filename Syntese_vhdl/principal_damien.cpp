@@ -31,10 +31,10 @@ string    chemin_6 = "/home/damien/Workspace/synthese_vhdl/fichier_test/synthese
 string    chemin_7 = "/home/damien/Workspace/synthese_vhdl/fichier_test/signaux_interm.txt";
 string    chemin_8 = "/home/damien/Workspace/synthese_vhdl/fichier_test/portes_interm.txt";
 
-list<string> a;
-list<string>::const_iterator i=a.begin();
-list<string> b;
-list<string>::const_iterator x=b.begin();
+list<string> liste_lexemes;
+list<string>::iterator i=liste_lexemes.begin(),x;
+list<string> liste_nom,liste_sous_type,liste_type,liste_taille;
+//list<string>::const_iterator x=liste_nom.begin();
 tree<string>::iterator loc;
 tree<string> tr,tr2;
 int erreur=0;
@@ -45,20 +45,20 @@ int erreur=0;
 fct_write_file(fct_Maj_To_Min(chemin_1),chemin_2); 
 fct_lexem_endl(chemin_2,chemin_3);
 fct_suppr_double_endl(chemin_3,chemin_4);
-a=fct_liste_lexeme(chemin_4);
-erreur=test_syntaxe(a);
+fct_liste_lexeme(chemin_4, liste_lexemes);
+erreur=test_syntaxe(liste_lexemes);
 
 
 if(erreur==0)
 {
-    tr=range_arbre(a);
-    b=creer_liste_nom(tr);
-    //print_tree(tr,tr.begin(),tr.end(), chemin_5);
+    range_arbre(liste_lexemes,tr);
+    check(tr,liste_nom,liste_sous_type,liste_type,liste_taille);
+    print_tree(tr,tr.begin(),tr.end(), chemin_5);
 
-    for(x=b.begin();x!=b.end();x++)
-    {cout<<*x<<endl;}
+    //for(x=liste_nom.begin();x!=liste_nom.end();x++)
+    //{cout<<*x<<endl;}
     //tr2=tr;
-    //print_tree(tr,tr.begin(),tr.end(), chemin_5);
+    //print_tree(tr,tr.begin(),tr.end(), chemin_8);
     //check_assignation(tr);
     //synthese(tr,chemin_6,chemin_7, chemin_8);
 

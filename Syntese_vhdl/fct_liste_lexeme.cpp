@@ -14,9 +14,8 @@
 using namespace std;
 
 
-list<string> fct_liste_lexeme(string nom_fichier_clean)
+void fct_liste_lexeme(string nom_fichier_clean, list<string> &liste_lexemes)
 {
-    list<string> liste_lexem;
     list<string>::iterator a,c;
     string b;
     char carac;
@@ -24,7 +23,7 @@ list<string> fct_liste_lexeme(string nom_fichier_clean)
     
     
     lexem.clear();
-    liste_lexem.clear();
+    liste_lexemes.clear();
      ifstream fichier_clean(nom_fichier_clean.c_str(), ios::in);  // on ouvre le fichier en lecture
     
     if(fichier_clean)  // si l'ouverture a réussi
@@ -34,7 +33,7 @@ list<string> fct_liste_lexeme(string nom_fichier_clean)
             {
                 if(carac=='\n')
                 {   
-                    liste_lexem.push_back(lexem);                    
+                    liste_lexemes.push_back(lexem);                    
                     lexem.clear();
 
                 }
@@ -45,8 +44,8 @@ list<string> fct_liste_lexeme(string nom_fichier_clean)
                 
             }
         }
-     a=liste_lexem.begin();
-     while(a!=liste_lexem.end())
+     a=liste_lexemes.begin();
+     while(a!=liste_lexemes.end())
      {
          if(*a=="'")
          {
@@ -65,11 +64,11 @@ list<string> fct_liste_lexeme(string nom_fichier_clean)
                     b=*a;
                     c=a;
                     a++;
-                    liste_lexem.erase(c);
+                    liste_lexemes.erase(c);
                     b=b+*a;
                     c=a;
                     a++;
-                    liste_lexem.erase(c);
+                    liste_lexemes.erase(c);
                     b=b+*a;
                     *a=b;
                     //cout<<b<<endl;
@@ -92,11 +91,11 @@ list<string> fct_liste_lexeme(string nom_fichier_clean)
                  b=*a;
                  c=a;
                  a++;
-                 liste_lexem.erase(c);
+                 liste_lexemes.erase(c);
                  b=b+*a;
                  c=a;
                  a++;
-                 liste_lexem.erase(c);
+                 liste_lexemes.erase(c);
                  b=b+*a;
                  *a=b;
                 //cout<<b<<endl;
@@ -108,12 +107,12 @@ list<string> fct_liste_lexeme(string nom_fichier_clean)
             }
           a++;       
          }
-     /*a=liste_lexem.begin();
-     while(a!=liste_lexem.end())
+     /*a=liste_lexemes.begin();
+     while(a!=liste_lexemes.end())
      {
          cout<<*a<<endl;
          a++;
      }*/
      
-     return liste_lexem;
+     return ;
 }

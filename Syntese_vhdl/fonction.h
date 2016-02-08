@@ -19,8 +19,8 @@ void fct_append_file(string chaine_de_carac, string path);
 void fct_lexem_endl(string nom_fichier_en_min,string path_cible);
 void test_fct_lexem(string nom_fichier_lexem_endl);
 void fct_suppr_double_endl(string nom_fichier_lexem_endl,string path_cible);
-tree<string> range_arbre(list<string> list_lexem);
-list<string> fct_liste_lexeme(string nom_fichier_clean);
+void range_arbre(list<string> list_lexem, tree<string> &tr);
+void fct_liste_lexeme(string nom_fichier_clean, list<string> &liste_lexemes);
 int test_syntaxe(list<string> a);
 
 list<string>::iterator range_library(list<string>::iterator, tree<string> &tr, tree<string>::iterator);
@@ -41,7 +41,7 @@ list<string>::iterator detection_parenthese_envers(list<string>::iterator i,tree
 list<string>::iterator range_source_B(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_source);
 list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_affectation_conditionnelle, list<string> liste);
 list<string>::iterator while_conditionnel(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_else, list<string> liste);
-list<string> creer_liste_nom(tree<string> tr);
+void check(tree<string> &tr,list<string> &liste_nom,list<string> &liste_sous_type, list<string> &liste_type, list<string> &liste_taille);
 
 
 //void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm);

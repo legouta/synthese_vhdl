@@ -13,10 +13,9 @@
 
 using namespace std;
 
-tree<string> range_arbre(list<string> list_lexem)
+void range_arbre(list<string> list_lexem, tree<string> &tr)
 {
    list<string>::iterator i=list_lexem.begin();
-   tree<string> tr;
    tree<string>::iterator root,i_lib,i_use,i_entity,i_archi;
    string lexem;
    
@@ -57,5 +56,5 @@ tree<string> range_arbre(list<string> list_lexem)
     }
      
     
-    return tr;
+    return ;
 }
