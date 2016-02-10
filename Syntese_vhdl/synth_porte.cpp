@@ -23,7 +23,7 @@ void synth_mult(string source_a,string operateur,string source_b, string destina
 void synth_eq(string source_a,string operateur,string source_b, string destination, string path_portes_interm, string nom_porte, string type_source_a);
 string creer_porte(string operateur, list<string> portes_util, string type_source_a);
 
-void synth_porte(string source_a,string operateur,string source_b, string destination, string path_portes_interm, list<string> portes_util, string path_signaux_interm)
+void synth_porte(string source_a,string operateur,string source_b, string destination, string path_portes_interm, list<string> portes_util, string path_signaux_interm,list<string> &liste_nom,list<string> &liste_type)
 {
     string type_source_a;
     string nom_porte;
@@ -48,19 +48,19 @@ void synth_porte(string source_a,string operateur,string source_b, string destin
     
     if(operateur=="+")
     {
-        tempo=creer_sig_int(path_signaux_interm);
+        tempo=creer_sig_int(path_signaux_interm,liste_nom,liste_type);
         synth_add(source_a, operateur, source_b, destination, path_portes_interm, nom_porte, type_source_a,tempo);
     }
     
     if(operateur=="-")
     {
-        tempo=creer_sig_int(path_signaux_interm);
+        tempo=creer_sig_int(path_signaux_interm,liste_nom,liste_type);
         synth_sub(source_a, operateur, source_b, destination, path_portes_interm, nom_porte, type_source_a,tempo);
     }
     
     if(operateur=="*")
     {
-        tempo=creer_sig_int(path_signaux_interm);
+        tempo=creer_sig_int(path_signaux_interm,liste_nom,liste_type);
         synth_mult(source_a, operateur, source_b, destination, path_portes_interm, nom_porte, type_source_a,tempo);
     }
     

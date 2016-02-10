@@ -36,7 +36,7 @@ list<string>::iterator i=liste_lexemes.begin(),x;
 list<string> liste_nom,liste_sous_type,liste_type,liste_taille;
 //list<string>::const_iterator x=liste_nom.begin();
 tree<string>::iterator loc;
-tree<string> tr,tr2;
+tree<string> tr;
 int erreur=0;
 
 
@@ -54,13 +54,15 @@ if(erreur==0)
     range_arbre(liste_lexemes,tr);
     //check(tr,liste_nom,liste_sous_type,liste_type,liste_taille);
     print_tree(tr,tr.begin(),tr.end(), chemin_5);
+    
+    
 
     //for(x=liste_nom.begin();x!=liste_nom.end();x++)
     //{cout<<*x<<endl;}
     //tr2=tr;
     //print_tree(tr,tr.begin(),tr.end(), chemin_8);
     //check_assignation(tr);
-    //synthese(tr,chemin_6,chemin_7, chemin_8);
+    //synthese(tr,chemin_6,chemin_7, chemin_8, liste_nom, liste_type);
 
 
 
