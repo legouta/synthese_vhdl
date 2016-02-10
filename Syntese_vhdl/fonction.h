@@ -41,7 +41,7 @@ list<string>::iterator detection_parenthese_envers(list<string>::iterator i,tree
 list<string>::iterator range_source_B(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_source);
 list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_affectation_conditionnelle, list<string> liste);
 list<string>::iterator while_conditionnel(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_else, list<string> liste);
-void check(tree<string> &tr,list<string> &liste_nom,list<string> &liste_sous_type, list<string> &liste_type, list<string> &liste_taille);
+void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_sous_type, list<string> &liste_type, list<string> &liste_taille);
 
 
 void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm, list<string> &liste_nom, list<string> &liste_type);
