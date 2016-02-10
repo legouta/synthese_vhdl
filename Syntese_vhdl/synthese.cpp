@@ -14,7 +14,7 @@
 #include "tree.hh"
 using namespace std;
 
-void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm, list<string> &liste_nom, list<string> &liste_type)
+void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm, list<string> &liste_nom, list<string> &liste_type, list<string> &liste_taille)
 {
     
     tree<string>::iterator it;
@@ -24,8 +24,8 @@ void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm
     a_ecrire.clear();
     list<string> portes_util;
     string tempo;
-    string tempo2;
-    string    chemin_5 = "/home/damien/Workspace/synthese_vhdl/fichier_test/arbre.txt";
+    string tempo2, nom_archi;
+    
 
     a_ecrire<<"library portes;"<<endl<<"use portes.cell.all;"<<endl;
     fct_write_file(a_ecrire.str(),path_synthese);
@@ -138,10 +138,12 @@ void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm
             it++;
             tempo2=*it;
             a_ecrire.clear();
+            nom_archi=*it;
             a_ecrire<<endl<<"architecture "<<*it<<" of ";
             it++;
             if(tr.depth(it)-rootdepth==2 && *it==tempo)
             {
+                
                 a_ecrire<<*it<<" is"<<endl;
                 
             }
@@ -198,11 +200,20 @@ void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm
     }
         if(*it=="affectation")
         {
-            synt_affec(tr,it,path_synthese, path_signaux_interm, path_portes_interm, portes_util, liste_nom, liste_type);
+            //cout<<"on lit affectation"<<endl;
+            
+            it=synt_affec(tr,it,path_synthese, path_signaux_interm, path_portes_interm, portes_util, liste_nom, liste_type,liste_taille);
+          
+            
         }
         
-        it++;
+        it++;            
+        
     }  
     recopie_fichier(path_synthese,path_signaux_interm);
     recopie_fichier(path_synthese,path_portes_interm);
+    fct_append_file("end ",path_synthese);
+    a_ecrire.str("");
+    a_ecrire<<nom_archi<<" ;"<<endl;
+    fct_append_file(a_ecrire.str(),path_synthese);
 }    
