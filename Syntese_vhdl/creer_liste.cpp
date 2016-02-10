@@ -8,7 +8,7 @@
 using namespace std;
 
 
-void check(tree<string> &tr,list<string> &liste_nom,list<string> &liste_sous_type, list<string> &liste_type, list<string> &liste_taille)
+void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_sous_type, list<string> &liste_type, list<string> &liste_taille)
 {
 
     
