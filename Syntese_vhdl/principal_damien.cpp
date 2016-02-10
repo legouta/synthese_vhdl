@@ -52,7 +52,7 @@ erreur=test_syntaxe(liste_lexemes);
 if(erreur==0)
 {
     range_arbre(liste_lexemes,tr);
-    check(tr,liste_nom,liste_sous_type,liste_type,liste_taille);
+    //check(tr,liste_nom,liste_sous_type,liste_type,liste_taille);
     print_tree(tr,tr.begin(),tr.end(), chemin_5);
 
     //for(x=liste_nom.begin();x!=liste_nom.end();x++)
