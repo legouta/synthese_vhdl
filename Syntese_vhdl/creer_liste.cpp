@@ -21,6 +21,8 @@ void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_so
 
     tree<string>::iterator tempo;
     int a=0;
+    int b=0;
+    int c=0;
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
      //////////////////////////////////////CREER_LISTE_NOM///////////////////////////////////////////////////
@@ -78,22 +80,30 @@ void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_so
         }
         if(*it=="process")
         {
-            while(tr.depth(it)-rootdepth !=5)
-            {
-                it++ ; 
-            }
-            while(tr.depth(it)-rootdepth !=3)
-            {
-                if(tr.depth(it)==5)
-                {
-                    nom_dans_tr<<*it;
-                    chaine_nom_dans_tr=nom_dans_tr.str();
-                    liste_nom.push_back(chaine_nom_dans_tr);
-                    chaine_nom_dans_tr.clear();
-                    nom_dans_tr.str("");
-                }
             it++;
-            }   
+            it++;
+            it++;
+            if(*it=="declaration")
+            {
+                while(tr.depth(it)-rootdepth !=5)
+                {
+                    it++ ; 
+                }
+                while(tr.depth(it)-rootdepth !=3)
+                {
+                    if(tr.depth(it)==5)
+                    {
+                        nom_dans_tr<<*it;
+                        chaine_nom_dans_tr=nom_dans_tr.str();
+                        liste_nom.push_back(chaine_nom_dans_tr);
+                        chaine_nom_dans_tr.clear();
+                        nom_dans_tr.str("");
+                    }
+                it++;
+                }  
+                
+            }
+             
         }
         it++;
     }
@@ -134,50 +144,63 @@ void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_so
                 it++;
             }
             it++;
-            while(tr.depth(it)-rootdepth !=3)
+            it++;
+            it++;
+            if(*it=="declaration")
             {
-                it++ ; 
-            }
-            while(tr.depth(it)-rootdepth !=2)
-            {
-                if(tr.depth(it)==3)
+                while(tr.depth(it)-rootdepth !=3)
                 {
-                    tempo=it;
+                    it++ ; 
                 }
-                if(tr.depth(it)==4)
+                while(tr.depth(it)-rootdepth !=2)
                 {
-                    nom_dans_tr<<*tempo;
-                    chaine_nom_dans_tr=nom_dans_tr.str();
-                    liste_sous_type.push_back(chaine_nom_dans_tr);
-                    chaine_nom_dans_tr.clear();
-                    nom_dans_tr.str(""); 
+                    if(tr.depth(it)==3)
+                    {
+                        tempo=it;
+                    }
+                    if(tr.depth(it)==4)
+                    {
+                        nom_dans_tr<<*tempo;
+                        chaine_nom_dans_tr=nom_dans_tr.str();
+                        liste_sous_type.push_back(chaine_nom_dans_tr);
+                        chaine_nom_dans_tr.clear();
+                        nom_dans_tr.str(""); 
+                    }
+                    it++;
                 }
-                it++;
             }
+            
         }
         if(*it=="process")
         {
-            while(tr.depth(it)-rootdepth !=5)
-            {
-                it++ ; 
-            }
-            it--;
-            while(tr.depth(it)-rootdepth !=3)
-            {
-                if(tr.depth(it)==4)
-                {
-                    tempo=it;
-                }
-                if(tr.depth(it)==5)
-                {
-                    nom_dans_tr<<*tempo;
-                    chaine_nom_dans_tr=nom_dans_tr.str();
-                    liste_sous_type.push_back(chaine_nom_dans_tr);
-                    chaine_nom_dans_tr.clear();
-                    nom_dans_tr.str("");
-                }
             it++;
-            }   
+            it++;
+            it++;
+            if(*it=="declaration")
+            {
+                while(tr.depth(it)-rootdepth !=5)
+                {
+                    it++ ; 
+                }
+                it--;
+                while(tr.depth(it)-rootdepth !=3)
+                {
+                    if(tr.depth(it)==4)
+                    {
+                        tempo=it;
+                    }
+                    if(tr.depth(it)==5)
+                    {
+                        nom_dans_tr<<*tempo;
+                        chaine_nom_dans_tr=nom_dans_tr.str();
+                        liste_sous_type.push_back(chaine_nom_dans_tr);
+                        chaine_nom_dans_tr.clear();
+                        nom_dans_tr.str("");
+                    }
+                it++;
+                }
+            }
+               
         }
         it++;
     }
@@ -218,41 +241,53 @@ void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_so
                 it++;
             }
             it++;
-            while(tr.depth(it)-rootdepth !=4)
+            it++;
+            it++;
+            if(*it=="declaration")
             {
-                it++ ; 
-            }
-            while(tr.depth(it)-rootdepth !=2)
-            {
-                if(tr.depth(it)==5)
+                while(tr.depth(it)-rootdepth !=4)
                 {
-                    nom_dans_tr<<*it;
-                    chaine_nom_dans_tr=nom_dans_tr.str();
-                    liste_type.push_back(chaine_nom_dans_tr);
-                    chaine_nom_dans_tr.clear();
-                    nom_dans_tr.str("");
+                    it++ ; 
                 }
-                it++;
+                while(tr.depth(it)-rootdepth !=2)
+                {
+                    if(tr.depth(it)==5)
+                    {
+                        nom_dans_tr<<*it;
+                        chaine_nom_dans_tr=nom_dans_tr.str();
+                        liste_type.push_back(chaine_nom_dans_tr);
+                        chaine_nom_dans_tr.clear();
+                        nom_dans_tr.str("");
+                    }
+                    it++;
+                }
             }
+            
         }
         if(*it=="process")
         {
-            while(tr.depth(it)-rootdepth !=5)
-            {
-                it++ ; 
-            }
-            while(tr.depth(it)-rootdepth !=3)
-            {
-                if(tr.depth(it)==6)
-                {
-                    nom_dans_tr<<*it;
-                    chaine_nom_dans_tr=nom_dans_tr.str();
-                    liste_type.push_back(chaine_nom_dans_tr);
-                    chaine_nom_dans_tr.clear();
-                    nom_dans_tr.str("");
-                }
             it++;
-            }   
+            it++;
+            it++;
+            if(*it=="declaration")
+            {
+                while(tr.depth(it)-rootdepth !=5)
+                {
+                    it++ ; 
+                }
+                while(tr.depth(it)-rootdepth !=3)
+                {
+                    if(tr.depth(it)==6)
+                    {
+                        nom_dans_tr<<*it;
+                        chaine_nom_dans_tr=nom_dans_tr.str();
+                        liste_type.push_back(chaine_nom_dans_tr);
+                        chaine_nom_dans_tr.clear();
+                        nom_dans_tr.str("");
+                    }
+                it++;
+                }                   
+            }
         }
         it++;
     }
@@ -292,7 +327,7 @@ void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_so
                         {
                             if(a==0)
                             {
-                                nom_dans_tr<<*it;
+                                nom_dans_tr<<*it<<" ";
                                 chaine_nom_dans_tr=nom_dans_tr.str(); 
                             }
                             it++;
@@ -317,16 +352,16 @@ void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_so
                         nom_dans_tr.str("");
                         it++;
                 }
-                    if(tr.depth(it)==2)
+                if(tr.depth(it)==2)
+                {
+                    while(tr.depth(it) !=3)
                     {
-                        while(tr.depth(it) !=3)
-                        {
-                            it++;
-                        }
-                        liste_taille.push_back("0");
-                        chaine_nom_dans_tr.clear();
-                        nom_dans_tr.str("");
+                        it++;
                     }
+                    liste_taille.push_back("0");
+                    chaine_nom_dans_tr.clear();
+                    nom_dans_tr.str("");
+                }
                 if (*it=="architecture")
                 {
                     it--;
@@ -337,33 +372,34 @@ void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_so
                 it++;
             }
             it++;
-            while(tr.depth(it)-rootdepth !=5)
+            it++;
+            it++;
+            if(*it=="declaration")
+            {
+                while(tr.depth(it)-rootdepth !=5)
                 {
                     it++ ; 
                 }
-            while(tr.depth(it)-rootdepth!=2)
-            {
-                if(tr.depth(it)==5)
+                while(tr.depth(it)-rootdepth!=2)
                 {
-                    it++;
-                }
-                if(tr.depth(it)==6)
-                {
-                    while(tr.depth(it) !=4) 
+                    if(tr.depth(it)==5)
+                    {
+                        it++;
+                    }
+                    if(tr.depth(it)==6)
+                    {
+                        while(tr.depth(it) !=4) 
                         {
                             if(a==0)
                             {
-                                nom_dans_tr<<*it;
+                                nom_dans_tr<<*it<<" ";
                                 chaine_nom_dans_tr=nom_dans_tr.str(); 
                             }
                             it++;
-                            it_tempo=it;
-                            it_tempo++;
-                            if(tr.depth(it_tempo)-rootdepth==2)
+                            if(tr.depth(it)-rootdepth==2)
                             {
                                 a=1;
                             }
-
                         }
                     if(a==1)
                     {
@@ -371,12 +407,14 @@ void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_so
                         it--;
                         it--;
                         it--;
-                        a=0;
+                        //a=0;
                     }
                         liste_taille.push_back(chaine_nom_dans_tr);
                         chaine_nom_dans_tr.clear();
                         nom_dans_tr.str("");
                         it++;
+                        b=1;
+                        
                 }
                 if(tr.depth(it)==4)
                 {
@@ -389,79 +427,107 @@ void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_so
                     nom_dans_tr.str("");
                     it--;
                 }
-                if (tr.depth(it)==2)
+                if (tr.depth(it)==2 && b==0)
                 {
                     it--;
                     liste_taille.push_back("0");
                     chaine_nom_dans_tr.clear();
                     nom_dans_tr.str("");
+                    b=1;
                 }
-             it++;   
+             it++; 
+                if (tr.depth(it)==2 && b==1 && c==0 &&a==0)
+                {
+                    liste_taille.push_back("0");
+                    chaine_nom_dans_tr.clear();
+                    nom_dans_tr.str("");
+                    b=0;
+                    c=1;
+                }
+                
+            }                
             }
+            
             
         }
         if(*it=="process")
         {
-            while(tr.depth(it)-rootdepth !=3)
+            it++;
+            it++;
+            it++;
+            if(*it=="declaration")
             {
-                while(tr.depth(it)-rootdepth !=6)
+                it++;
+                while(tr.depth(it)-rootdepth !=3)
                 {
-                    it++ ; 
-                }
-                if(tr.depth(it)==6)
-                {
-                    it++;
-                }
-                if(tr.depth(it)==7)
-                {
-                    while(tr.depth(it) !=5) 
+                    while(tr.depth(it)-rootdepth !=6)
+                    {
+                        it++ ; 
+                    }
+                    if(tr.depth(it)==6)
+                    {
+                        it++;
+                    }
+                    if(tr.depth(it)==7)
+                    {
+                        while(tr.depth(it) !=5) 
                         {
                             if(a==0)
                             {
-                                nom_dans_tr<<*it;
+                                nom_dans_tr<<*it<<" ";
                                 chaine_nom_dans_tr=nom_dans_tr.str(); 
                             }
                             it++;
-                            it_tempo=it;
-                            it_tempo++;
-                            if(tr.depth(it_tempo)-rootdepth==3)
+                            if(tr.depth(it)-rootdepth==3)
                             {
                                 a=1;
                             }
-
                         }
                     if(a==1)
                     {
                         it--;
                         it--;
-                        it--;
-                        it--;
-                        a=0;
                     }
                         liste_taille.push_back(chaine_nom_dans_tr);
                         chaine_nom_dans_tr.clear();
                         nom_dans_tr.str("");
-                        //it++;
+                        it++;
+                        b=1;
                 }
                 if(tr.depth(it)==5)
                 {
-                    while(tr.depth(it) !=6)
-                    {
-                        it++;
-                    }
+                    
                     liste_taille.push_back("0");
                     chaine_nom_dans_tr.clear();
                     nom_dans_tr.str("");
+                    
                 }
-                if (tr.depth(it)==3)
+                   
+                    it--;
+                if (tr.depth(it)==3 && a==0 )
                 {
                     it--;
                     liste_taille.push_back("0");
                     chaine_nom_dans_tr.clear();
                     nom_dans_tr.str("");
+                    b=1;
                 }
-            it++;    
+                    if(a==1)
+                    {
+                        it--;
+                    }
+            it++; 
+                if (tr.depth(it)==3 && b==1 && c==0 &&a==0)
+                {
+                    liste_taille.push_back("0");
+                    chaine_nom_dans_tr.clear();
+                    nom_dans_tr.str("");
+                    b=0;
+                    c=1;
+                }
+            }                
             }
+            
             
         }
      it++; 

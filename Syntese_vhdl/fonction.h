@@ -42,7 +42,8 @@ list<string>::iterator range_source_B(list<string>::iterator i,tree<string> &tr,
 list<string>::iterator range_affectation_seq_cond(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_affectation_conditionnelle, list<string> liste);
 list<string>::iterator while_conditionnel(list<string>::iterator i,tree<string> &tr, tree<string>::iterator i_else, list<string> liste);
 void creer_liste(tree<string> &tr,list<string> &liste_nom,list<string> &liste_sous_type, list<string> &liste_type, list<string> &liste_taille);
-
+int check_same_name(list<string> &liste_nom,int erreur);
+int check_assignation(tree<string> tr,list<string> &liste_nom, list<string> &liste_sous_type, list<string> &liste_taille, int erreur);
 
 void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm, list<string> &liste_nom, list<string> &liste_type);
 void recopie_fichier(string path_cible, string path_source);
@@ -51,10 +52,7 @@ void synt_affec(tree<string> &tr, tree<string>::iterator it, string path_synthes
 void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_signaux_interm,string path_portes_interm, list<string> &portes_util,list<string> &liste_nom,list<string> &liste_type);
 string creer_sig_int(string path_signaux_interm, list<string> &liste_nom, list<string> &liste_type);
 void synth_porte(string source_a,string operateur,string source_b, string destination, string path_portes_interm, list<string> portes_util, string path_signaux_interm,list<string> &liste_nom,list<string> &liste_type);
-<<<<<<< HEAD
 
-=======
->>>>>>> 6b9933c46e17996a0422250f81de0c1a93d0445a
 
 void print_tree(const tree<string> &tr, tree<string>::pre_order_iterator it, tree<string>::pre_order_iterator end, string chemin_5);
 
