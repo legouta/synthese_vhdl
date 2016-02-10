@@ -51,7 +51,7 @@ void synt_affec(tree<string> &tr, tree<string>::iterator it, string path_synthes
 void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_signaux_interm,string path_portes_interm, list<string> &portes_util,list<string> &liste_nom,list<string> &liste_type);
 string creer_sig_int(string path_signaux_interm);
 void synth_porte(string source_a,string operateur,string source_b, string destination, string path_portes_interm, list<string> portes_util, string path_signaux_interm,list<string> &liste_nom,list<string> &liste_type);
-
+void fonction_opif;
 
 void print_tree(const tree<string> &tr, tree<string>::pre_order_iterator it, tree<string>::pre_order_iterator end, string chemin_5);
 
