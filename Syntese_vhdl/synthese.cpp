@@ -14,7 +14,7 @@
 #include "tree.hh"
 using namespace std;
 
-void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm)
+void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm, list<string> &liste_nom, list<string> &liste_type)
 {
     
     tree<string>::iterator it;
@@ -198,7 +198,7 @@ void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm
     }
         if(*it=="affectation")
         {
-            synt_affec(tr,it,path_synthese, path_signaux_interm, path_portes_interm, portes_util);
+            synt_affec(tr,it,path_synthese, path_signaux_interm, path_portes_interm, portes_util, liste_nom, liste_type);
         }
         
         it++;

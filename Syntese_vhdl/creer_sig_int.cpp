@@ -14,7 +14,7 @@
 #include "tree.hh"
 using namespace std;
 
-string creer_sig_int(string path_signaux_interm)
+string creer_sig_int(string path_signaux_interm, list<string> &liste_nom,list<string> &liste_type)
 {
     stringstream sig_int;
     int nb=0;
