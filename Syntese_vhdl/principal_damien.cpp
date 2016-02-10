@@ -60,6 +60,7 @@ if(erreur==0)
 {
     range_arbre(liste_lexemes,tr);
     creer_liste(tr,liste_nom,liste_sous_type,liste_type,liste_taille);
+    erreur=check_same_name(liste_nom,erreur);
     print_tree(tr,tr.begin(),tr.end(), chemin_5);
     cout<<"arbre ecrit"<<endl;
    
@@ -70,8 +71,10 @@ if(erreur==0)
     //tr2=tr;
     //print_tree(tr,tr.begin(),tr.end(), chemin_8);
     //check_assignation(tr);
-    synthese(tr,chemin_6,chemin_7, chemin_8, liste_nom, liste_type,liste_taille);
-    
+    if(erreur==0)
+    {
+        synthese(tr,chemin_6,chemin_7, chemin_8, liste_nom, liste_type,liste_taille);
+    }
 
 
 
