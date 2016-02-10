@@ -48,21 +48,19 @@ int check_assignation(tree<string> tr,list<string> &liste_nom, list<string> &lis
 void synthese(tree<string> &tr, string path_synthese, string path_signaux_interm,string path_portes_interm, list<string> &liste_nom, list<string> &liste_type,list<string> &liste_taille);
 void recopie_fichier(string path_cible, string path_source);
 list<string>::iterator check_assignation(tree<string> &tr);
-<<<<<<< HEAD
 void synt_affec(tree<string> &tr, tree<string>::iterator it, string path_synthese, string path_signaux_interm,string path_portes_interm, list<string> portes_util,list<string> &liste_nom,list<string> &liste_type);
 void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_signaux_interm,string path_portes_interm, list<string> &portes_util,list<string> &liste_nom,list<string> &liste_type);
 string creer_sig_int(string path_signaux_interm, list<string> &liste_nom, list<string> &liste_type);
 void synth_porte(string source_a,string operateur,string source_b, string destination, string path_portes_interm, list<string> portes_util, string path_signaux_interm,list<string> &liste_nom,list<string> &liste_type);
 
 
-=======
+
 tree<string>::iterator synt_affec(tree<string> &tr, tree<string>::iterator it, string path_synthese, string path_signaux_interm,string path_portes_interm, list<string> &portes_util,list<string> &liste_nom,list<string> &liste_type,list<string> &liste_taille);
 void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_signaux_interm,string path_portes_interm, list<string> &portes_util,list<string> &liste_nom,list<string> &liste_type, list<string> &liste_taille);
 string creer_sig_int(string path_signaux_interm, list<string> &liste_nom, list<string> &liste_type, string type_sig_int, string taille_sig_int);
 void synth_porte(string source_a,string operateur,string source_b, string destination, string path_portes_interm, list<string> &portes_util, string path_signaux_interm,list<string> &liste_nom,list<string> &liste_type,list<string> &liste_taille);
 string synth(tree<string> &tr, tree<string>::iterator &a, string &path_signaux_interm, string &path_portes_interm, list<string> &portes_util,list<string> &liste_nom,list<string> &liste_type,list<string> &liste_taille);
 string synth_bis(tree<string> &tr, tree<string>::iterator &a, string &path_signaux_interm, string &path_portes_interm, list<string> &portes_util,list<string> &liste_nom,list<string> &liste_type, list<string> &liste_taille, string destination);
->>>>>>> cdfca619b9e859f663da741087d4976b54d9718c
 void print_tree(const tree<string> &tr, tree<string>::pre_order_iterator it, tree<string>::pre_order_iterator end, string chemin_5);
 
 
