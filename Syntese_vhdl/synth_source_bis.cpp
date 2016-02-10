@@ -14,11 +14,11 @@
 #include "tree.hh"
 using namespace std;
 
-void synth(tree<string> &tr, tree<string>::iterator &a, string &path_signaux_interm, string &path_portes_interm, list<string> &portes_util,list<string> &liste_nom,list<string> &liste_type);
 
-void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_signaux_interm, string path_portes_interm, list<string> &portes_util, list<string> &liste_nom, list<string> &liste_type)
+void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_signaux_interm, string path_portes_interm, list<string> &portes_util, 
+                        list<string> &liste_nom, list<string> &liste_type, list<string> &liste_taille)
 {
-    int rootdepth=tr.depth(it); //au niveau de "affectation"
+    int rootdepth=tr.depth(it); //au niveau de "source_bis"
     tree<string>::iterator a=it, b;
     stringstream a_ecrire;
     a_ecrire.clear();
@@ -26,15 +26,21 @@ void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_s
     string source_a;
     string operateur;
     string source_b;
-    string destination;
+    string destination, type_sig_int,taille_sig_int;
+   
     bool fait=false;
+    //cout<<"dans synth_source_bis "<<*a<<endl;
+    
+    //cout<<"on rentre dans source bis"<<endl;
     
     a++;
     while(tr.depth(a)-rootdepth>=1)
     {
         if(*a=="sources_bis")
 	{
-            synth_source_bis(tr,a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type);
+            synth_source_bis(tr,a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type,liste_taille);
+            a=it;
+            a++;
 	}
         a++;
     }
@@ -61,7 +67,9 @@ void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_s
             if(*a=="=" && fait==false)
             {
                 fait=true;
-                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type);                
+                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type,liste_taille);
+                a=it;
+                a++;
             }
             a++;
         }
@@ -72,7 +80,9 @@ void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_s
             if(*a=="and" && fait==false)
             {
                 fait=true;
-                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type);                
+                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type,liste_taille);                
+                a=it;
+                a++;
             }
             a++;
         }
@@ -83,7 +93,9 @@ void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_s
             if(*a=="or" && fait==false)
             {
                 fait=true;
-                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type);                
+                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type,liste_taille);
+                a=it;
+                a++;                
             }
             a++;
         }
@@ -94,7 +106,9 @@ void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_s
             if(*a=="xor" && fait==false)
             {
                 fait=true;
-                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type);                
+                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type,liste_taille);
+                a=it;
+                a++;
             }
             a++;
         }
@@ -105,7 +119,9 @@ void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_s
             if(*a=="*" && fait==false)
             {
                 fait=true;
-                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type);                
+                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type,liste_taille);
+                a=it;
+                a++;
             }
             a++;
         }
@@ -116,7 +132,9 @@ void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_s
             if(*a=="+" && fait==false)
             {
                 fait=true;
-                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type);               
+                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type,liste_taille);
+                a=it;
+                a++;
             }
             a++;
         }
@@ -127,7 +145,9 @@ void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_s
             if(*a=="-" && fait==false)
             {
                 fait=true;
-                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type);               
+                synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type,liste_taille);
+                a=it;
+                a++;
             }
             a++;
         }
@@ -146,38 +166,16 @@ void synth_source_bis(tree<string> &tr, tree<string>::iterator it, string path_s
     }
             
             
-            
+    a=it;        
     if(nb_fils_affec==3)
     {
         a++;
-        source_a=*a;
         a++;
-        operateur=*a;
-        a++;
-        source_b=*a;
-        destination=creer_sig_int(path_signaux_interm,liste_nom,liste_type);
-        synth_porte(source_a,operateur,source_b, destination, path_portes_interm, portes_util, path_signaux_interm,liste_nom,liste_type);
+        destination=synth(tr, a, path_signaux_interm, path_portes_interm, portes_util,liste_nom,liste_type,liste_taille); 
     }
-    
-   // il faut remplacer source_bis par destination créée juste au dessus
-    cout<<"nb fils affec bis = "<<nb_fils_affec<<endl;
+    a=it;
+    tr.insert(a,destination);
+    tr.erase(it);
 
-
-}
-
-
-void synth(tree<string> &tr, tree<string>::iterator &a, string &path_signaux_interm, string &path_portes_interm, list<string> &portes_util, list<string> &liste_nom,list<string> &liste_type )
-{
-    string destination, source_a, source_b, operateur;
-    
-    destination=creer_sig_int(path_signaux_interm,liste_nom,liste_type);
-    a--;
-    source_a=*a;
-    tr.insert(a,destination);//ajoute sibling justa avant a
-    tr.erase(a);
-    operateur=*a;
-    a=tr.erase(a);//supprime *a et incrémente
-    source_b=*a;
-    a=tr.erase(a);
-    synth_porte(source_a,operateur,source_b, destination, path_portes_interm, portes_util, path_signaux_interm,liste_nom,liste_type);
+  
 }

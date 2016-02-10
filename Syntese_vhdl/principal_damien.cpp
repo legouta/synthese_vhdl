@@ -22,7 +22,7 @@ using namespace std;
 int principal_damien() {
 //string    chemin_1 = "/.automount/nfs5176/exports/users1/phelma2014/legouta/Bureau/test.txt";
 //string    chemin_2 = "/.automount/nfs5176/exports/users1/phelma2014/legouta/Bureau/fichier_en_min.txt";
-string    chemin_1 = "/home/damien/Workspace/synthese_vhdl/fichier_test/test.txt";
+string    chemin_1 = "/home/damien/Workspace/synthese_vhdl/fichier_test/test_2.txt";
 string    chemin_2 = "/home/damien/Workspace/synthese_vhdl/fichier_test/fichier_en_min.txt";
 string    chemin_3 = "/home/damien/Workspace/synthese_vhdl/fichier_test/lexem_endl.txt";
 string    chemin_4 = "/home/damien/Workspace/synthese_vhdl/fichier_test/fichier_clean.txt";
@@ -32,13 +32,20 @@ string    chemin_7 = "/home/damien/Workspace/synthese_vhdl/fichier_test/signaux_
 string    chemin_8 = "/home/damien/Workspace/synthese_vhdl/fichier_test/portes_interm.txt";
 
 list<string> liste_lexemes;
-list<string>::iterator i=liste_lexemes.begin(),x;
+list<string>::iterator i=liste_lexemes.begin(),x, itl;
 list<string> liste_nom,liste_sous_type,liste_type,liste_taille;
 //list<string>::const_iterator x=liste_nom.begin();
 tree<string>::iterator loc;
 tree<string> tr;
-int erreur=0;
+int erreur=0, rang_signal=0, rang_type=0;
 
+fct_write_file("",chemin_2);
+fct_write_file("",chemin_3);
+fct_write_file("",chemin_4);
+fct_write_file("",chemin_5); 
+fct_write_file("",chemin_6);
+fct_write_file("",chemin_7);
+fct_write_file("",chemin_8);
 
 
 //cout << fct_Maj_To_Min("/.automount/nfs5176/exports/users1/phelma2014/legouta/Bureau/test.txt");
@@ -52,9 +59,10 @@ erreur=test_syntaxe(liste_lexemes);
 if(erreur==0)
 {
     range_arbre(liste_lexemes,tr);
-    //check(tr,liste_nom,liste_sous_type,liste_type,liste_taille);
+    creer_liste(tr,liste_nom,liste_sous_type,liste_type,liste_taille);
     print_tree(tr,tr.begin(),tr.end(), chemin_5);
-    
+    cout<<"arbre ecrit"<<endl;
+   
     
 
     //for(x=liste_nom.begin();x!=liste_nom.end();x++)
@@ -62,7 +70,8 @@ if(erreur==0)
     //tr2=tr;
     //print_tree(tr,tr.begin(),tr.end(), chemin_8);
     //check_assignation(tr);
-    //synthese(tr,chemin_6,chemin_7, chemin_8, liste_nom, liste_type);
+    synthese(tr,chemin_6,chemin_7, chemin_8, liste_nom, liste_type,liste_taille);
+    
 
 
 
